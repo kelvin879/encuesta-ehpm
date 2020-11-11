@@ -16,27 +16,31 @@ public class EncuestadorLlenadoService implements IEncuestadorLlenado{
 	{
 		lista = new LinkedList<>();
 		
-		Asignacion02 persona1 = new Asignacion02();
-		persona1.setNombre("Pablo");
-		persona1.setEstado("Terminada");
+		Asignacion02 encuesta1 = new Asignacion02();
+		encuesta1.setNombre("Numero de miembros fuera del hogar");
+		encuesta1.setEstado("Terminada");
+		encuesta1.setCorrelativo(0);
 
-		Asignacion02 persona2 = new Asignacion02();
-		persona2.setNombre("Rafael");
-		persona2.setEstado("Terminada");
+		Asignacion02 encuesta2 = new Asignacion02();
+		encuesta2.setNombre("Caracteristicas sociodemograficas");
+		encuesta2.setEstado("Terminada");
+		encuesta2.setCorrelativo(1);
 	
-		Asignacion02 persona3 = new Asignacion02();
-		persona3.setNombre("Lucy");
-		persona3.setEstado("En progreso");
+		Asignacion02 encuesta3 = new Asignacion02();
+		encuesta3.setNombre("Educacion");
+		encuesta3.setEstado("En progreso");
+		encuesta3.setCorrelativo(2);
 				
-		Asignacion02 persona4 = new Asignacion02();
-		persona4.setNombre("Carlos");
-		persona4.setEstado("Pendiente");
+		Asignacion02 encuesta4 = new Asignacion02();
+		encuesta4.setNombre("Salud");
+		encuesta4.setEstado("Pendiente");
+		encuesta4.setCorrelativo(3);
 		
 		
-		lista.add(persona1);
-		lista.add(persona2);
-		lista.add(persona3);
-		lista.add(persona4);
+		lista.add(encuesta1);
+		lista.add(encuesta2);
+		lista.add(encuesta3);
+		lista.add(encuesta4);
 	}
 	
 	@Override

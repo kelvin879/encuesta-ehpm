@@ -1,32 +1,104 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-	<meta charset="UTF-8">
-	<title>Asignación 02</title>
-</head>
-<body>
-	
-	<table border=1>
-		<thead>
-			<tr>
-				<td><center>Correlativo</center></td>
-				<td><center>Nombre</center></td>
-				<td><center>Estado</center></td>
-				<td><center>Acciones</center></td>
-						
-			</tr>		
-		</thead>
-		<tbody>
-			<tr th:each= "lista:${encuestas}">
-				<td th:text=${lista.correlativo}></td> 
-				<td th:text=${lista.nombre}></td>
-				<td th:text=${lista.estado}></td>	
-				<td> </td>
-														 	
-			</tr>
+  <head>
+    <title>Encuesta</title>
 
-		</tbody>		
-	</table>
+    <!-- Hojas css -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  </head>
 
-</body>
+  <body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="index.html"><i class="fas fa-laptop-code"></i></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="llenado">Inicio</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Contenido de la página -->
+    <div class="container">
+      <h1>Llenado de encuesta</h1>
+      <div class="card">
+        <div class="card-header">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <h5>Hoja de encuesta 0000</h5>
+            </div> 
+            <div class="col-md-6">
+				<div class="dropdown">
+					  <button class="btn btn-secondary dropdown-toggle float-right" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+					    <i class="fas fa-ellipsis-v" ></i>
+					  </button>
+					  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+					    <button class="dropdown-item" type="button">Ver identificacion</button>
+					    <button class="dropdown-item" type="button">Muestral</button>
+					    <button class="dropdown-item" type="button">Ver informacion de visitas</button>
+					  </div>
+				 </div>
+			 </div>         
+          </div>
+          
+        </div>
+        <div class="card-body">
+          <h5>Secciones:</h5>
+          <table class="table text-center">
+            <thead>
+              <tr>
+                <th>Correlativo</th>
+                <th>Nombre</th>
+                <th>Estado</th>
+                <th>Acciones</th>   
+              </tr>
+            </thead>
+      
+            <tbody>
+              <tr th:each= "lista:${encuestas}">
+                <td th:text=${lista.correlativo}></td>
+                <td th:text=${lista.nombre}></td>
+                <td th:text=${lista.estado}></td>
+                <td th:switch="${lista.estado}"> 
+			     <button th:case="'Terminada'"  type="button" class="btn btn-dark"><i class="fas fa-ellipsis-h"></i><i class="fas fa-ellipsis-h"></i></button>
+			     <button th:case="'En progreso'" type="button" class="btn btn-dark"><i class="fas fa-edit"></i></button>
+			     <button th:case="'Pendiente'" type="button" class="btn btn-dark"><i class="fas fa-check"></i></button>				
+				 </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+            <div class="card-footer text-muted">
+              <div class="float-right">
+               
+                <button id="btnCancelar" class="btn btn-outline-dark" type="button">Cancelar</button>
+                       
+                <button class="btn btn-dark" type="button">Guardar</button>
+              </div>
+            </div>
+      </div>
+    </div>
+    
+
+    <!-- Scripts js -->
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Script tooltip -->
+    <script src="js/script_tooltip.js"></script>
+    <!-- Script tabla -->
+    <script src="js/tabla.js"></script>
+  </body>
 </html>

@@ -36,11 +36,16 @@ public class EncuestadorLlenadoService implements IEncuestadorLlenado{
 		encuesta4.setEstado("Pendiente");
 		encuesta4.setCorrelativo(3);
 		
+		Asignacion02 encuesta5 = new Asignacion02();
+		encuesta5.setNombre("Empleo e ingreso");
+		encuesta5.setEstado("Pendiente");
+		encuesta5.setCorrelativo(4);
 		
 		lista.add(encuesta1);
 		lista.add(encuesta2);
 		lista.add(encuesta3);
 		lista.add(encuesta4);
+		lista.add(encuesta5);
 	}
 	
 	@Override

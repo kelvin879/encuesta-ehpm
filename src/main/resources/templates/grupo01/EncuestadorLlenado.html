@@ -1,44 +1,45 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <title>Encuesta</title>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-    <!-- Hojas css -->
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Font awesome -->
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-  </head>
-
-  <body>
-    <!-- Barra de navegación -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="index.html"><i class="fas fa-laptop-code"></i></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="llenado">Inicio</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-    <!-- Contenido de la página -->
+    <head>
+        <title>
+            LlenadodeEncuesta
+        </title>
+        <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+     
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    </head>
+<body>
+   <!-- Barra_de_navegación -->
+   <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+    <a class="navbar-text pull-left" href="EncuestaLlenado.html">ENCUESTA EHPM</a>
+     <a class="navbar-brand"  href="EncuestaLlenado.html"><i class="far fa-user-circle float-right"></i></a>   
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></button>
+  
+      </nav>
+ 
+  
+  <!-- Contenido_de_la_página -->
     <div class="container">
-      <h1>Llenado de encuesta</h1>
-      <div class="card">
-        <div class="card-header">
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <h5>Hoja de encuesta 0000</h5>
+<h2>Llenado de encuesta</h2>
+    <h3>Encuestador: Juan Perez</h3>
+
+
+    <div class="card">
+      <div class="card-header ">
+        <div class="form-row">
+          <div class="col-md-6">
+            <h2>Hoja de Encuesta:0000</h2>
+
+
             </div> 
             <div class="col-md-6">
 				<div class="dropdown">
-					  <button class="btn btn-secondary dropdown-toggle float-right" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+					  <button class="btn btn-secondary dropdown float-right" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
 					    <i class="fas fa-ellipsis-v" ></i>
 					  </button>
 					  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -68,11 +69,26 @@
                 <td th:text=${lista.correlativo}></td>
                 <td th:text=${lista.nombre}></td>
                 <td th:text=${lista.estado}></td>
-                <td th:switch="${lista.estado}"> 
-			     <button th:case="'Terminada'"  type="button" class="btn btn-dark"><i class="fas fa-ellipsis-h"></i><i class="fas fa-ellipsis-h"></i></button>
-			     <button th:case="'En progreso'" type="button" class="btn btn-dark"><i class="fas fa-edit"></i></button>
-			     <button th:case="'Pendiente'" type="button" class="btn btn-dark"><i class="fas fa-check"></i></button>				
-				 </td>
+                <td><div th:switch="${lista.estado}"> 
+    			 <p th:case="'Terminada'"><button
+                type="button"
+                class=" btn btn-light"
+                title="Terminada">
+                <i class="fas fa-ellipsis-h"></i></button></p>
+  				<p th:case="'En progreso'"><button
+                type="button"
+                class="btn"
+                style="background-color:#F7FAFA"
+                title="Iniciar"
+                >Continuar</button></p> 
+     			<p th:case="'Pendiente'"><button
+                type="button"
+                style="background-color:#F7FAFA"
+                class="btn"
+                title="Iniciar"
+                >Iniciar</button></p> 
+</div>
+			     </td>
               </tr>
             </tbody>
           </table>
@@ -80,7 +96,8 @@
             <div class="card-footer text-muted">
               <div class="float-right">
                
-                <button id="btnCancelar" class="btn btn-outline-dark" type="button">Cancelar</button>
+               <button type="button" class="btn" style="background-color:#E2E1E1">
+            Cancelar</button>
                        
                 <button class="btn btn-dark" type="button">Guardar</button>
               </div>
@@ -89,16 +106,6 @@
     </div>
     
 
-    <!-- Scripts js -->
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- Script tooltip -->
-    <script src="js/script_tooltip.js"></script>
-    <!-- Script tabla -->
-    <script src="js/tabla.js"></script>
+    
   </body>
 </html>

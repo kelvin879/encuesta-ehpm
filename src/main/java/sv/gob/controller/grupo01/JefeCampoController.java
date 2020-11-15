@@ -33,7 +33,7 @@ public class JefeCampoController {
 	private String EncuestasPendientes(Model model)
 	{
 		List<EncuestasPendientes> lista2 = pendiente.mostrar2();
-		model.addAttribute("encuestas",lista2);
+		model.addAttribute("encuestas2",lista2);
 		return "grupo01/EncuestasPendientes";
 	}
 

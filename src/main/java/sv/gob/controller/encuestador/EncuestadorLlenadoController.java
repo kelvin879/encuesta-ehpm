@@ -1,4 +1,4 @@
-package sv.gob.controller.grupo01;
+package sv.gob.controller.encuestador;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import sv.gob.models.Asignacion02;
-import sv.gob.service.grupo01.IEncuestadorLlenado;
+import sv.gob.service.encuestador.IEncuestadorLlenado;
 
 @Controller
 public class EncuestadorLlenadoController {

@@ -1,4 +1,4 @@
-package sv.gob.service.grupo01;
+package sv.gob.service.jefeDeCampo;
 
 import java.util.LinkedList;
 import java.util.List;

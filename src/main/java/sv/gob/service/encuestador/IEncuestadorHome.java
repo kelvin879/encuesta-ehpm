@@ -1,4 +1,4 @@
-package sv.gob.service.grupo02;
+package sv.gob.service.encuestador;
 
 import java.util.List;
 

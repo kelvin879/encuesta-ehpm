@@ -1,4 +1,4 @@
-package sv.gob.controller.grupo01;
+package sv.gob.controller.jefeDeCampo;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import sv.gob.models.PilaDeEncuestas;
+import sv.gob.service.jefeDeCampo.IJefeCampoService;
 import sv.gob.models.EncuestasPendientes;
-import sv.gob.service.grupo01.IJefeCampoService;
 
 
 @Controller

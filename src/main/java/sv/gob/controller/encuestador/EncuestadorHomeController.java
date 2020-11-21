@@ -1,4 +1,4 @@
-package sv.gob.controller.grupo02;
+package sv.gob.controller.encuestador;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import sv.gob.models.grupo02.Encuesta;
-import sv.gob.service.grupo02.IEncuestadorHome;
+import sv.gob.service.encuestador.IEncuestadorHome;
 
 @Controller
 public class EncuestadorHomeController {

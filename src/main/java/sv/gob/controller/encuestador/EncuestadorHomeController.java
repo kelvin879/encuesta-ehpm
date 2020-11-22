@@ -16,7 +16,7 @@ public class EncuestadorHomeController {
 	@Autowired
 	private IEncuestadorHome EncuestadorHomeService;
 	
-	@GetMapping("/prueba")
+	@GetMapping("/encuestador")
 	private String EncuestadorHome(Model model)
 	{
 	List<Encuesta> listaD=EncuestadorHomeService.mostrarDisponibles();

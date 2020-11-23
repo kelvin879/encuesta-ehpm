@@ -1,32 +1,50 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-    <head>
-        <title>
-            PilaEncuestas
-        </title>
-        <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-     
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    </head>
+  <head>  
+    <title>Pila de encuestas</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <div th:replace="base/general :: hojas_de_estilo"></div>
+
+  </head>
+
 <body>
-   <!-- Barra_de_navegación -->
-   <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
-    <a class="navbar-text pull-left" th:href="@{/pila}">ENCUESTA EHPM</a>
-     <a class="navbar-brand"  th:href="@{/pila}"><i class="far fa-user-circle float-right"></i></a>   
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></button>
-  
-      </nav>
+    <!-- Barra_de_navegación -->
+    <div th:replace="base/general :: navbar(~{ :: .elementos})">
+      <ul class="navbar-nav mr-auto elementos">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="tabla.html">Tabla</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="formulario.html">Formulario</a>
+        </li>
+      </ul>
+    </div>
  
-  
+  <br>
   <!-- Contenido_de_la_página -->
-    <div class="container">
-<h2>Pila de Ecuestas</h2>
-    <h3>Grupo:04</h3>
+  <div class="container">
+    
+    
+    
+    <div th:replace="base/general :: titulo_pantalla(
+      titulo=~{ :: .titulo}, btnPrincipal=~{ :: .btnPrincipal}, subTit=~{ :: .subTit}
+    )">
+      <h2 class="titulo">Pila de Ecuestas hola mundo 1</h2>
+      <div class="btnPrincipal"></div>
+      <h5 class="subTit">Grupo:04</h5>
+
+      <!-- <div class="subTit"></div> -->
+      <!-- <button class="btn btn-primary btnPrincipal">Botón Principal</button> -->
+    </div>
+    
+    <!-- <h2>Pila de Ecuestas hola mundo</h2> -->
+    
 
 
     <div class="card">
@@ -60,7 +78,7 @@
                 <td th:text=${lista.domicilio}></td>
                 <td th:text=${lista.mes}></td>
                 <td> 
-                <a th:href="@{/pendiente}" class="btn" role="button" style="background-color:#F7FAFA" aria-pressed="true">Habilitar</a>
+                <a th:href="@{/pendiente}" class="btn" role="button" aria-pressed="true"><i class="fas fa-plus"></i> Habilitar</a>
    				</td>
   										     
               </tr>
@@ -68,9 +86,9 @@
           </table>
         </div>
                   </div>
-    </div>
+  </div>
     
 
-    
+  <div th:replace="base/general :: scripts"></div>
   </body>
 </html>  

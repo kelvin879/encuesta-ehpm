@@ -15,8 +15,8 @@
 <body>
    <!-- Barra_de_navegación -->
    <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
-    <a class="navbar-text pull-left" th:href="@{/usuarios}">ENCUESTA EHPM</a>
-     <a class="navbar-brand"  th:href="@{/usuarios}"><i class="far fa-user-circle float-right"></i></a>   
+    <a class="navbar-text pull-left" th:href="@{/grupos}">ENCUESTA EHPM</a>
+     <a class="navbar-brand"  th:href="@{/grupos}"><i class="far fa-user-circle float-right"></i></a>   
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></button>
   
@@ -30,10 +30,11 @@
 <h2>Administrar Usuarios</h2>
  </div>
  <div class="col-md-6">
- <a th:href="@{/usuario/create}" class="btn float-right" role="button" aria-pressed="true" style="background-color:#E2E1E1"><i class="fas fa-plus"></i> Nuevo Usuario</a>
+ <a th:href="@{/grupo/create}" class="btn float-right" role="button" aria-pressed="true" style="background-color:#E2E1E1"><i class="fas fa-plus"> Nuevo Grupo</i></a>
  </div>
-  
-    </div>
+ 
+ 
+  </div>
 
 <br>
 
@@ -41,51 +42,49 @@
       <div class="card-header ">
         <div class="form-row">
           <div class="col-md-6">
-            <h2>Lista de Usuarios </h2>
-
-            </div> 
-                    
+            <h2>Lista de Grupos </h2>
+             </div> 
+                                 
           </div>
           
         </div>
         <div class="card-body">
-        <div class="row float-right">
-        <div class="col-md-12">
-          <div class="input-group float-right">
-        <span class="input-group-btn float-right">
-        <button class="btn btn-default float-right" style="background-color:#E2E1E1" type="button">Busqueda</button>
-        </span>
-        <input type="text" class="form-control">
-       </div>
-       </div>
-       </div>
-       
-        <br>
+        
+         <div class="row float-right">
+         <div class="col-md-12">
+    			<div class="input-group float-right">
+      			<span class="input-group-btn float-right">
+        		<button class="btn btn-default float-right" style="background-color:#E2E1E1" type="button">Busqueda</button>
+      				</span>
+      			<input type="text" class="form-control">
+    			</div>
+  				</div>
+          </div>
+          
           <br>
+          <br>
+          
           <table class="table text-center table-striped">
             <thead>
               <tr>
                 <th>Codigo</th>
-                <th>Apellidos</th>
                 <th>Nombre</th>
-                <th>Correo</th>
-                <th>DUI</th>
-                <th>Rol</th>
+                <th>Zona de Operacion</th>
+                <th>Miembros</th>
                 <th>Acciones</th>   
               </tr>
             </thead>
       
             <tbody>
-              <tr th:each= "lista:${mostrarUsuario}">
+              <tr th:each= "lista:${mostrarGrupo}">
                 <td th:text=${lista.codigo}></td>
-                <td th:text=${lista.apellidos}></td>
-                <td th:text=${lista.nombres}></td>
-                <td th:text=${lista.correo}></td>
-                <td th:text=${lista.dui}></td>
-                <td th:text=${lista.rol}></td>
+                <td th:text=${lista.nombre}></td>
+                <td th:text=${lista.zonaDeOperacion}></td>
+                <td><a th:href="@{/}" class="btn" role="button" aria-pressed="true" ><i class="fas fa-users"></i></a>
+                </td>
                 <td> 
                  
-  				 <a th:href="@{/usuario/update}" class="btn" role="button" aria-pressed="true"><i class="fas fa-pen"></i></a>
+  				 <a th:href="@{/grupo/update}" class="btn" role="button" aria-pressed="true"><i class="fas fa-pen"></i></a>
   				<button type="button" class="btn btn-eliminar"><i class="fas fa-trash-alt"></i></button>
   				   
    				</td>
@@ -118,4 +117,4 @@
   </div>
  </div>   
   </body>
-</html>  
+</html>

@@ -1,39 +1,45 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-    <head>
-        <title>
-            AdministracionUsuarios
-        </title>
-        <meta charset="utf-8">
+<head>  
+  <title>Administrar Grupos</title>
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-     
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    </head>
+
+  <!-- Hojas de estilo generales -->
+  <div th:replace="base/general :: hojas_de_estilo"></div>
+</head>
+
 <body>
-   <!-- Barra_de_navegación -->
-   <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
-    <a class="navbar-text pull-left" th:href="@{/grupos}">ENCUESTA EHPM</a>
-     <a class="navbar-brand"  th:href="@{/grupos}"><i class="far fa-user-circle float-right"></i></a>   
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></button>
-  
-      </nav>
- 
-  <br>
+  <!-- Barra_de_navegación -->
+  <div th:replace="base/general :: navbar(~{ :: .elementos})">
+    <ul class="navbar-nav mr-auto elementos">
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="index.html">Inicio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="tabla.html">Tabla</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="formulario.html">Formulario</a>
+      </li> -->
+    </ul>
+  </div>
+
   <!-- Contenido_de_la_página -->
-    <div class="container">
-    <div class="row">
-  <div class="col-lg-6">
-<h2>Administrar Usuarios</h2>
- </div>
- <div class="col-md-6">
- <a th:href="@{/grupo/create}" class="btn float-right" role="button" aria-pressed="true" style="background-color:#E2E1E1"><i class="fas fa-plus"> Nuevo Grupo</i></a>
- </div>
- 
- 
+  <div class="container">
+    <!-- Título de la pantalla -->
+    <div th:replace="base/general :: titulo_pantalla(
+      titulo=~{ :: .titulo}, btnPrincipal=~{ :: .btnPrincipal}, subTit=~{ :: .subTit}
+    )">
+      <h2 class="titulo">Administrar Grupos</h2>
+      <a
+        th:href="@{/grupo/crear}"
+        class="btn btn-dark btn-sm btnPrincipal"
+      ><i class="fas fa-plus"></i> Nuevo Grupo</a>
+   
+      <h5 class="subTit">Coordinación de Levantamiento de Información</h5>
+    </div>
   </div>
 
 <br>

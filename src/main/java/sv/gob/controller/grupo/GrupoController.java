@@ -1,4 +1,4 @@
-package sv.gob.controller.administrador;
+package sv.gob.controller.grupo;
 
 import java.util.List;
 

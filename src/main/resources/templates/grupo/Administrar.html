@@ -40,87 +40,83 @@
    
       <h5 class="subTit">Coordinación de Levantamiento de Información</h5>
     </div>
-  </div>
-
-<br>
-
-    <div class="card">
-      <div class="card-header ">
-        <div class="form-row">
-          <div class="col-md-6">
-            <h2>Lista de Grupos </h2>
-             </div> 
-                                 
-          </div>
+  
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h5>Lista de Grupos </h5>
+          </div> 
           
-        </div>
-        <div class="card-body">
-        
-         <div class="row float-right">
-         <div class="col-md-12">
-    			<div class="input-group float-right">
-      			<span class="input-group-btn float-right">
-        		<button class="btn btn-default float-right" style="background-color:#E2E1E1" type="button">Busqueda</button>
-      				</span>
-      			<input type="text" class="form-control">
-    			</div>
-  				</div>
-          </div>
+          <div class="card-body">
           
-          <br>
-          <br>
-          
-          <table class="table text-center table-striped">
-            <thead>
-              <tr>
-                <th>Codigo</th>
-                <th>Nombre</th>
-                <th>Zona de Operacion</th>
-                <th>Miembros</th>
-                <th>Acciones</th>   
-              </tr>
-            </thead>
-      
-            <tbody>
-              <tr th:each= "lista:${mostrarGrupo}">
-                <td th:text=${lista.codigo}></td>
-                <td th:text=${lista.nombre}></td>
-                <td th:text=${lista.zonaDeOperacion}></td>
-                <td><a th:href="@{/}" class="btn" role="button" aria-pressed="true" ><i class="fas fa-users"></i></a>
-                </td>
-                <td> 
-                 
-  				 <a th:href="@{/grupo/update}" class="btn" role="button" aria-pressed="true"><i class="fas fa-pen"></i></a>
-  				<button type="button" class="btn btn-eliminar"><i class="fas fa-trash-alt"></i></button>
-  				   
-   				</td>
-  										     
-              </tr>
-            </tbody>
-          </table>
-        </div>
-                
-                  
-                   <div class="card-footer">
-
-                  <div class="float-right">
-                
-                   <div class="btn-group float-right" style="background-color:#E2E1E1">
-  						<button type="button" class="btn btn-default"><i class="fas fa-angle-left"></i></button>
-  						<button type="button" class="btn btn-default"><i class="fas fa-angle-double-left"></i></button>
-  						<button type="button" class="btn btn-default">1</button>
-  						<button type="button" class="btn btn-default">2</button>
-  						<button type="button" class="btn btn-default">3</button>
-  						<button type="button" class="btn btn-default">4</button>
-  						<button type="button" class="btn btn-default">5</button>
-  						<button type="button" class="btn btn-default"><i class="fas fa-angle-right"></i></button>
-  						<button type="button" class="btn btn-default"><i class="fas fa-angle-double-right"></i></button>
-                   
-                </div>
+          <div class="row float-right mb-4">
+            <div class="col-md-12">
+              <div class="input-group float-right">
+                <span class="input-group-btn float-right">
+                <button class="btn btn-outline-dark float-right" type="button">Busqueda</button>
+                  </span>
+                <input type="text" class="form-control">
+              </div>
             </div>
+          </div>
+            
+            <table class="table text-center table-striped">
+              <thead>
+                <tr>
+                  <th>Codigo</th>
+                  <th>Nombre</th>
+                  <th>Zona de Operacion</th>
+                  <th>Miembros</th>
+                  <th>Acciones</th>   
+                </tr>
+              </thead>
+        
+              <tbody>
+                <tr th:each= "lista:${mostrarGrupo}">
+                  <td th:text=${lista.codigo}></td>
+                  <td th:text=${lista.nombre}></td>
+                  <td th:text=${lista.zonaDeOperacion}></td>
+                  <td><a th:href="@{/}" class="btn" role="button" aria-pressed="true" ><i class="fas fa-users"></i></a>
+                  </td>
+                  <td> 
+                  
+            <a th:href="@{/grupo/update}" class="btn" role="button" aria-pressed="true"><i class="fas fa-pen"></i></a>
+            <button type="button" class="btn btn-eliminar"><i class="fas fa-trash-alt"></i></button>
+              
+            </td>
+                            
+                </tr>
+              </tbody>
+            </table>
+          </div>
+                    
+                      
+                      <div class="card-footer">
+
+                      <div class="float-right">
+                    
+                      <div class="btn-group float-right" style="background-color:#E2E1E1">
+                  <button type="button" class="btn btn-default"><i class="fas fa-angle-left"></i></button>
+                  <button type="button" class="btn btn-default"><i class="fas fa-angle-double-left"></i></button>
+                  <button type="button" class="btn btn-default">1</button>
+                  <button type="button" class="btn btn-default">2</button>
+                  <button type="button" class="btn btn-default">3</button>
+                  <button type="button" class="btn btn-default">4</button>
+                  <button type="button" class="btn btn-default">5</button>
+                  <button type="button" class="btn btn-default"><i class="fas fa-angle-right"></i></button>
+                  <button type="button" class="btn btn-default"><i class="fas fa-angle-double-right"></i></button>
+                      
+                    </div>
+                </div>
+        </div>
+        
+        </div>
+      </div>
     </div>
-    
   </div>
- </div>   
-  </body>
+  
+  <!-- Scripts generales -->
+  <div th:replace="base/general :: scripts"></div>
+</body>
 </html>

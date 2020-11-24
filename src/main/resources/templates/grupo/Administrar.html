@@ -49,18 +49,23 @@
           </div> 
           
           <div class="card-body">
-          
-          <div class="row float-right mb-4">
-            <div class="col-md-12">
-              <div class="input-group float-right">
-                <span class="input-group-btn float-right">
-                <button class="btn btn-outline-dark float-right" type="button">Busqueda</button>
+            
+            <!-- Búsqueda -->
+            <div class="row float-right mb-4">
+              <div class="col-md-12">
+                <div class="input-group float-right">
+                  <span class="input-group-btn float-right">
+                    <button
+                      class="btn btn-outline-dark float-right"
+                      type="button"
+                    >Busqueda</button>
                   </span>
-                <input type="text" class="form-control">
+                  <input type="text" class="form-control">
+                </div>
               </div>
             </div>
-          </div>
             
+            <!-- Tabla de grupos -->
             <table class="table text-center table-striped">
               <thead>
                 <tr>
@@ -77,39 +82,86 @@
                   <td th:text=${lista.codigo}></td>
                   <td th:text=${lista.nombre}></td>
                   <td th:text=${lista.zonaDeOperacion}></td>
-                  <td><a th:href="@{/}" class="btn" role="button" aria-pressed="true" ><i class="fas fa-users"></i></a>
+                  <td>
+                    <a
+                      th:href="@{/}"
+                      class="btn btn-outline-dark"
+                      role="button"
+                      aria-pressed="true"
+                      data-toggle="tooltip"
+                      data-placement="bottom"
+                      title="Administrar miembros"
+                    ><i class="fas fa-users"></i></a>
                   </td>
-                  <td> 
-                  
-            <a th:href="@{/grupo/update}" class="btn" role="button" aria-pressed="true"><i class="fas fa-pen"></i></a>
-            <button type="button" class="btn btn-eliminar"><i class="fas fa-trash-alt"></i></button>
-              
-            </td>
-                            
+                  <td>                         
+                    <a
+                      th:href="@{/grupo/editar}"
+                      class="btn btn-outline-dark"
+                      role="button"
+                      aria-pressed="true"
+                      data-toggle="tooltip"
+                      data-placement="bottom"
+                      title="Editar grupo"
+                    ><i class="fas fa-edit"></i></a>
+                    <button
+                      type="button"
+                      class="btn btn-outline-dark"
+                      data-toggle="tooltip"
+                      data-placement="bottom"
+                      title="Eliminar grupo"
+                    ><i class="fas fa-trash-alt"></i></button>              
+                  </td>                            
                 </tr>
               </tbody>
             </table>
+          </div> 
+          <!-- Fin card body -->
+                    
+                      
+          <div class="card-footer">
+            <!-- Paginación -->
+            <div class="float-right">                    
+              <div class="btn-group float-right" style="background-color:#E2E1E1">
+                <button
+                  type="button"
+                  class="btn btn-default"
+                ><i class="fas fa-angle-left"></i></button>
+                <button
+                  type="button"
+                  class="btn btn-default"
+                ><i class="fas fa-angle-double-left"></i></button>
+                <button
+                  type="button"
+                  class="btn btn-default"
+                >1</button>
+                <button
+                  type="button"
+                  class="btn btn-default"
+                >2</button>
+                <button
+                  type="button"
+                  class="btn btn-default"
+                >3</button>
+                <button
+                  type="button"
+                  class="btn btn-default"
+                >4</button>
+                <button
+                  type="button"
+                  class="btn btn-default"
+                >5</button>
+                <button
+                  type="button"
+                  class="btn btn-default"
+                ><i class="fas fa-angle-right"></i></button>
+                <button
+                  type="button"
+                  class="btn btn-default"
+                ><i class="fas fa-angle-double-right"></i></button>
+                    
+              </div>
+            </div>
           </div>
-                    
-                      
-                      <div class="card-footer">
-
-                      <div class="float-right">
-                    
-                      <div class="btn-group float-right" style="background-color:#E2E1E1">
-                  <button type="button" class="btn btn-default"><i class="fas fa-angle-left"></i></button>
-                  <button type="button" class="btn btn-default"><i class="fas fa-angle-double-left"></i></button>
-                  <button type="button" class="btn btn-default">1</button>
-                  <button type="button" class="btn btn-default">2</button>
-                  <button type="button" class="btn btn-default">3</button>
-                  <button type="button" class="btn btn-default">4</button>
-                  <button type="button" class="btn btn-default">5</button>
-                  <button type="button" class="btn btn-default"><i class="fas fa-angle-right"></i></button>
-                  <button type="button" class="btn btn-default"><i class="fas fa-angle-double-right"></i></button>
-                      
-                    </div>
-                </div>
-        </div>
         
         </div>
       </div>

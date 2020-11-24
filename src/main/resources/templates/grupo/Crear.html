@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>  
-  <title>Editar Grupo</title>
+  <title>Registrar Grupo</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -10,77 +10,90 @@
   <div th:replace="base/general :: hojas_de_estilo"></div>
 </head>
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>GrupoUpdate</title>
-    <!-- Hojas css -->
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Font awesome -->
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-
-</head>
-
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
-    <a class="navbar-text pull-left" th:href="@{/grupo/create}">ENCUESTA EHPM</a>
-     <a class="navbar-brand"  th:href="@{/grupo]/create}"><i class="far fa-user-circle float-right"></i></a>   
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></button>
-      </nav>
+  <!-- Barra_de_navegación -->
+  <div th:replace="base/general :: navbar(~{ :: .elementos})">
+    <ul class="navbar-nav mr-auto elementos">
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="index.html">Inicio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="tabla.html">Tabla</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="formulario.html">Formulario</a>
+      </li> -->
+    </ul>
+  </div>
 
-
-
-    <div class="container">
-        <h1>Agregar | Editar grupo</h1>
-        <h3>Coordinacion de levantamiento de informacion</h3>
-
+  <!-- Contenido_de_la_página -->
+  <div class="container">
+    <!-- Título de la pantalla -->
+    <div th:replace="base/general :: titulo_pantalla(
+      titulo=~{ :: .titulo}, btnPrincipal=~{ :: .btnPrincipal}, subTit=~{ :: .subTit}
+    )">
+      <h2 class="titulo">Registrar Grupo</h2>
+      <div class="btnPrincipal"></div>      
+      <h5 class="subTit">Coordinación de Levantamiento de Información</h5>
+    </div>
+    
+    <div class="row mb-4">
+      <div class="col-md-12">
         <div class="card">
-            <div class="card-header "><h2>Informacion de grupo</h2> 
-              <small class="text-danger">*Obligatorio</small>
-            </div> 
+          <div class="card-header ">
+            <h5>Información del Grupo</h5> 
+            <small class="text-danger">* Obligatorio</small>
+          </div> 
             
-            <div class="card-body">
-                <form>
+          <div class="card-body">
+            <form>
 
-                    <div class="form-row">
+              <div class="form-row">
 
-                        <div class="form-group col-md-6">
-                            <label for="codigo">Codigo: <span class="text-danger">*</span></label><br>
-                            <input type="text" class="form-control" id="nombre" placeholder="Nombre"
-                                name="codigo">
-                        </div>
+                <div class="form-group col-md-6">
+                  <label for="codigo">
+                    Código: <span class="text-danger">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="codigo"
+                    placeholder="Código del grupo"
+                    name="codigo"
+                    value=""
+                  >
+                </div>
 
-                        <div class="form-group col-md-6">
-                            <label for="correo">Nombre:<span class="text-danger">*</span></label><br>
-                            <input type="text" class="form-control" placeholder="Apellido" id="apellido"
-                                name="correo">
-                        </div>
+                <div class="form-group col-md-6">
+                  <label for="correo">
+                    Nombre: <span class="text-danger">*</span>
+                  </label>
+                  <input type="text" class="form-control" placeholder="Nombre del grupo" id="nombre"
+                      name="nombre" value="">
+                </div>
+              </div>
 
-                    </div>
-				 <div class="form-row">
+              <div class="form-row">
+                  
                     
-                     
-                         <div class="form-group col-md-6">
+                        <div class="form-group col-md-6">
 
-                            <label for="carrera">Zona de operacion:<span class="text-danger">*</span></label><br>
-                            <select name="carrera" id="carrera" class="form-control">
+                          <label for="carrera">Zona de operación: <span class="text-danger">*</span></label><br>
+                          <select name="carrera" id="carrera" class="form-control">
 
-                                <option value="" disabled selected>Seleccione una zona</option>
-                                <option value="Jefedecampo">Oriental</option>
-                                <option value="Encuestador">Occidental</option>
-                                <option value="UnidaddeCC">Central I</option>
-                                <option value="Coordinador">Central II</option>
-                                <option value="Coordinador">AMSS</option>
+                              <option value="" disabled selected>Seleccione una zona</option>
+                              <option value="Jefedecampo">Oriental</option>
+                              <option value="Encuestador">Occidental</option>
+                              <option value="UnidaddeCC">Central I</option>
+                              <option value="Coordinador">Central II</option>
+                              <option value="Coordinador">AMSS</option>
 
-                            </select>
-                        </div>
+                          </select>
+                      </div>
 
-                       </div>
+                      </div>
 
-                    </div>
+          </div>
 
                 </form>
             
@@ -89,12 +102,17 @@
 
                 <div class="float-right">
                 
-                    <button type="button" class="btn" style="background-color:#E2E1E1">
-                        Cancelar</button>
+                    <a th:href="@{/grupo/administrar}" type="button" class="btn btn-outline-dark">
+                        Cancelar</a>
                     <button type="submit" class="btn btn-dark">Guardar</button>
                 </div>
             </div>
         </div>
-</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts generales -->
+  <div th:replace="base/general :: scripts"></div>
 </body>
 </html>

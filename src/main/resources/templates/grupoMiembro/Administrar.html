@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Administrar grupos</title>
+  <title>Administrar Miembros del Grupo XX</title>
   <div th:replace="base/general :: hojas_de_estilo"></div>
 </head>
 
@@ -12,7 +12,7 @@
   <!-- Barra_de_navegación -->
   <div th:replace="base/general :: navbar(~{ :: .elementos})">
     <ul class="navbar-nav mr-auto elementos">
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="index.html">Inicio</a>
       </li>
       <li class="nav-item">
@@ -20,33 +20,31 @@
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="formulario.html">Formulario</a>
-      </li>
+      </li> -->
     </ul>
   </div>
 
   <!-- Contenido_de_la_página -->
   <div class="container">
+
     <!-- Título de la pantalla -->
     <div
       th:replace="base/general :: titulo_pantalla(titulo=~{ :: .titulo}, btnPrincipal=~{ :: .btnPrincipal}, subTit=~{ :: .subTit})">
-      <h2 class="titulo">Administrar miembros del grupo XX</h2>
-      <div class="subTit">Coordinacion del levantamiento de informacion</div>
+      <h2 class="titulo">Administrar Miembros del Grupo XX</h2>
+      <h5 class="subTit">Coordinación de Levantamiento de Información</h5>
       <div class="btnPrincipal"></div>
-
-      <!-- <h5 class="subTit">Grupo:04</h5> -->
-      <!-- <button class="btn btn-primary btnPrincipal"><i class="fas fa-plus"></i> Botón Principal</button>   -->
     </div>
 
     <div class="row mb-4">
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-            <h5>Agregar miembro</h5>
-            <small class="text-danger">*Obligatorio</small>
+            <h5>Información de Miembro</h5>
+            <small class="text-danger">* Obligatorio</small>
           </div>
-          <form method="POST">
-            <div class="card-body">
 
+          <div class="card-body">
+            <form id="formGrupoMiembro" action="" method="POST">
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label>Rol: <span class="text-danger">*</span></label>
@@ -66,25 +64,36 @@
                 <div class="form-group col-md-6">
                   <label for="nombre">Miembro: <span class="text-danger">*</span></label>
                   <input type="hidden">
-                  <select class="custom-select">
-                    <option selected disabled>--Seleccione un miembro--</option>
+                  <select class="form-control">
+                    <option selected disabled>Seleccione un miembro</option>
                     <option value="1">Pablo Avelar</option>
                     <option value="2">Lucy Montoya</option>
                     <option value="3">Rafael Viscarra</option>
                   </select>
                 </div>
               </div>
+            
+            </form>
+          </div>
 
+          <div class="card-footer">
+            <div class="float-right">
+
+              <!-- Botón de cancelar -->
+              <a
+                href=""
+                class="btn btn-outline-dark"
+                role="button"
+              >Cancelar</a>
+
+              <!-- Botón de submit -->
+              <button
+                class="btn btn-dark"
+                type="submit"
+                form="formGrupoMiembro"
+              >Guardar</button>
             </div>
-            <div class="card-footer">
-              <div class="float-right border border-primary">
-                <!-- Botón de cancelar -->
-                <a class="btn btn-outline-dark" role="button">Limpiar</a>
-                <!-- Botón de submit -->
-                <button class="btn btn-dark" type="submit">Guardar</button>
-              </div>
-            </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
@@ -103,9 +112,9 @@
             </div>
 
             <div class="row">
-              <div class="table-responsive">
-                <table class="table table-striped border">
-                  <thead class="thead-light">
+              <div class="col-md-12">
+                <table class="table text-center table-striped">
+                  <thead>
                     <tr>
                       <th scope="col">Codigo</th>
                       <th scope="col">Apellidos</th>
@@ -123,7 +132,15 @@
                       <td>correo@correo.com</td>
                       <td>11111111-2</td>
                       <td>Jefe de campo</td>
-                      <td><a href="#" class="btn btn-outline-danger btn-sm"><i class="fas fa-trash-alt"></i></a></td>
+                      <td>
+                        <a
+                          href=""
+                          class="btn btn-outline-dark"
+                          data-toggle="tooltip"
+                          data-placement="bottom"
+                          title="Eliminar miembro"
+                        ><i class="fas fa-user-minus"></i></a>
+                      </td>
                     </tr>
                     <tr>
                       <td>QQ0001</td>
@@ -132,7 +149,15 @@
                       <td>correo@correo.com</td>
                       <td>11111111-2</td>
                       <td>Encuestador</td>
-                      <td><a href="#" class="btn btn-outline-danger btn-sm"><i class="fas fa-trash-alt"></i></a></td>
+                      <td>
+                        <a
+                          href=""
+                          class="btn btn-outline-dark"
+                          data-toggle="tooltip"
+                          data-placement="bottom"
+                          title="Eliminar miembro"
+                        ><i class="fas fa-user-minus"></i></a>
+                      </td>
                     </tr>
                     <tr>
                       <td>MM0001</td>
@@ -141,7 +166,15 @@
                       <td>correo@correo.com</td>
                       <td>11111111-2</td>
                       <td>Encuestador</td>
-                      <td><a href="#" class="btn btn-outline-danger btn-sm"><i class="fas fa-trash-alt"></i></a></td>
+                      <td>
+                        <a
+                          href=""
+                          class="btn btn-outline-dark"
+                          data-toggle="tooltip"
+                          data-placement="bottom"
+                          title="Eliminar miembro"
+                        ><i class="fas fa-user-minus"></i></a>
+                      </td>
                     </tr>
                     <tr>
                       <td>PP0001</td>
@@ -150,7 +183,15 @@
                       <td>correo@correo.com</td>
                       <td>11111111-2</td>
                       <td>Encuestador</td>
-                      <td><a href="#" class="btn btn-outline-danger btn-sm"><i class="fas fa-trash-alt"></i></a></td>
+                      <td>
+                        <a
+                          href=""
+                          class="btn btn-outline-dark"
+                          data-toggle="tooltip"
+                          data-placement="bottom"
+                          title="Eliminar miembro"
+                        ><i class="fas fa-user-minus"></i></a>
+                      </td>
                     </tr>
                   </tbody>
                   </thead>
@@ -158,7 +199,9 @@
               </div>
             </div>
           </div>
-          <div class="card-footer pt-4">
+
+          <!-- Paginación -->
+          <div class="card-footer">
             <nav aria-label="Page navigation example">
               <ul class="pagination justify-content-end">
                 <li class="page-item disabled">

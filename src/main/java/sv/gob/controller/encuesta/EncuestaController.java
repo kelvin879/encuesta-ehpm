@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/encuesta")
-public class AdministrarEncuesta {
+public class EncuestaController {
 	
 	@GetMapping("/administrar")
 	private String crearEncuesta()

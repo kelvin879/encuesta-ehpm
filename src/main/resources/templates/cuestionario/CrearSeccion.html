@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>  
-  <title>Administrar Encuestas</title>
+  <title>Diseño de Cuestionario</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -11,7 +11,7 @@
 </head>
 
 <body>
-	<!-- Barra_de_navegación -->
+  <!-- Barra_de_navegación -->
   <div th:replace="base/general :: navbar(~{ :: .elementos})">
     <ul class="navbar-nav mr-auto elementos">
       <!-- <li class="nav-item">
@@ -25,91 +25,88 @@
       </li> -->
     </ul>
 	</div>
-	
+
 	<!-- Contenido_de_la_página -->
   <div class="container">
+
     <!-- Título de la pantalla -->
     <div th:replace="base/general :: titulo_pantalla(
       titulo=~{ :: .titulo}, btnPrincipal=~{ :: .btnPrincipal}, subTit=~{ :: .subTit}
     )">
-      <h2 class="titulo">Administrar Encuestas</h2>
-      <div class="btnPrincipal"></div>      
-			<h5 class="subTit">Administrador</h5>     
-			
-      <!-- <div class="subTit"></div>  -->
-      <!-- <button class="btn btn-dark btn-sm btnPrincipal"><i class="fas fa-plus"></i> Botón Principal</button> -->
-		</div>
-		
+      <h2 class="titulo">Diseño de Cuestionario</h2>
+      <div class="btnPrincipal"></div>
+			<h5 class="subTit">Unidad de Metodología</h5>
+    </div>
+	
 		<div class="row mb-4">
-			<div class="col-md-12"> 	
+      <div class="col-md-12">	
 				<div class="card">
-
 					<div class="card-header">
-						<h5>Información de Encuesta</h5>
+						<h5>Información de Sección</h5>
 						<small class="text-danger">* Obligatorio</small>
-					</div>		  
+					</div>	
 
 					<div class="card-body">
-						<form  method="post"> 	   			   			 
+						<form id="formSeccion" action=""> 	
+
 							<div class="form-row">
 								<div class="form-group col-md-6" >
 									<label for="codigo">Código: <span class="text-danger">*</span></label>
 									<input type="hidden">											    
-											<input type="text" class="form-control"  placeholder="Código" required="required">
+									<input type="text" class="form-control"  placeholder="Código" required="required">
 								</div>
 								<div class="form-group col-md-6" >
 									<label for="nombre">Nombre: <span class="text-danger">*</span></label>
 									<input type="hidden">											    
-											<input type="text" class="form-control"  placeholder="Nombre" required="required">
+										<input type="text" class="form-control"  placeholder="Nombre" required="required">
 								</div>
-							<div class="form-group col-md-12">
-									<label for="descripcion">Descripción: <span class="text-danger">*</span></label>					    
-											<input type="text" class="form-control"  placeholder="Descripción" required="required">
 							</div>
-							</div>					 					                  			  
-						</div>								  
-						<div class="card-footer">
-							<div class="float-right">
-								<!-- Botón de cancelar -->
-								<a 
-									href=""
-									class="btn btn-outline-dark" 
-									role="button"
-								>Cancelar</a>
-
-								<!-- Botón de submit -->
-								<button class="btn btn-dark" type="submit">Guardar</button>
+							<div class="form-row">
+								<div class="form-group col-md-12">
+									<label for="descripcion">Descripción: <span class="text-danger">*</span></label>					    
+									<input type="text" class="form-control"  placeholder="Descripción" required="required">
 								</div>
-						</div>   
-							</form>   	
-					</div>
-					</div>   		   	
-			</div>	  	
-			<div class="row">
+							</div>
+						
+						</form>								
+					</div>		
+
+					<div class="card-footer">
+						<div class="float-right">
+							<a href="" class="btn btn-outline-dark"  role="button">Cancelar</a>
+							<button class="btn btn-dark" type="submit" form="formSeccions">Guardar</button>
+						</div>  
+					</div>    	
+				</div>			  
+			</div>   		   	
+		</div>
+
+		<div class="row mb-4">
 			<div class="col-md-12">
 				<div class="card">
+
 					<div class="card-header">
-						<h5>Lista de encuestas</h5>
+						<h5>Lista de secciones</h5>
 					</div>
+
 					<div class="card-body">
 						<table class="table text-center table-striped">
 							<thead>
 								<tr>
 									<th>Código</th>
 									<th>Nombre</th>
-									<th>Descripción</th>
-									<th>Fecha de creación</th>
+									<th>Descripción</th>			 				
 									<th>Estado</th>
 									<th>Acciones</th>
 								</tr>
 							</thead>
+
 							<tbody>
 								<tr>
 									<td>001</td>
-									<td>EHPM-2020</td>
-									<td>Encuesta para la DIGESTYC 2020</td>
-									<td>10/10/2020</td>
-									<td>Habilitada</td>
+									<td>Salud</td>
+									<td>Sección de salud</td>			 				
+									<td>Finalizada</td>
 									<td>
 										<a
 											class="btn btn-outline-dark"
@@ -124,25 +121,53 @@
 											title="Eliminar encuesta"
 										><i class="fas fa-trash-alt"></i></a>
 										<a
+											th:href="@{/cuestionario/preguntas}"
 											class="btn btn-outline-dark"
 											data-toggle="tooltip"
 											data-placement="bottom"
-											title="Habilitar/Deshabilitar"
-										><i class="far fa-check-square"></i></a>
+											title="Agregar preguntas"
+										><i class="fas fa-plus"></i></a>
+									</td> 			 							
+								</tr>
+								<tr>
+									<td>002</td>
+									<td>sociodemográficos</td>
+									<td>Características sociodemográficas</td>			 				
+									<td>En proceso</td>
+									<td>
+										<a
+											class="btn btn-outline-dark"
+											data-toggle="tooltip"
+											data-placement="bottom"
+											title="Editar encuesta"
+										><i class="fas fa-edit"></i></a>
+										<a
+											class="btn btn-outline-dark"
+											data-toggle="tooltip"
+											data-placement="bottom"
+											title="Eliminar encuesta"
+										><i class="fas fa-trash-alt"></i></a>
+										<a
+											th:href="@{/cuestionario/preguntas}"
+											class="btn btn-outline-dark"
+											data-toggle="tooltip"
+											data-placement="bottom"
+											title="Agregar preguntas"
+										><i class="fas fa-plus"></i></a>
 									</td> 			 							
 								</tr>
 							</tbody>	 				
 						</table>
 					</div>
+
 					<div class="card-footer">
 					</div>
 				</div>
 			</div>
-			</div>
-		</div>	 
-	</div> 		 	
+		</div>
+	</div>	 
 	
 	<!-- Scripts generales -->
   <div th:replace="base/general :: scripts"></div>
-</body>
+	</body>
 </html>

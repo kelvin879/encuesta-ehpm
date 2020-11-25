@@ -1,16 +1,18 @@
-package sv.gob.controller.levantamiento;
+package sv.gob.controller.jornada;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import sv.gob.models.extensiones.*;
 import sv.gob.models.grupo02.Jornadas;
 import sv.gob.service.levantamiento.IJornadaService;
 
 @Controller
+@RequestMapping("/jornada")
 public class JornadaController {
 	
 	
@@ -20,7 +22,7 @@ public class JornadaController {
 	@Autowired
 	private IExtensiones ie;
 	
-	@GetMapping("/crearjornada")
+	@GetMapping("/crear")
 	private String CrearJornada(Model model) {
 		List<Departamentos> lista = ie.mostrarD();
 		List<Municipios> lista2 = ie.mostrarM();
@@ -31,10 +33,10 @@ public class JornadaController {
 		model.addAttribute("zona",lista3);
 		model.addAttribute("grupo",lista4);
 		
-		return "grupo02/Jornada";
+		return "jornada/Crear";
 	}
 	
-	@GetMapping("/editarjornada")
+	@GetMapping("/editar")
 	private String EditarJornada(Model model) {
 		List<Departamentos> lista = ie.mostrarD();
 		List<Municipios> lista2 = ie.mostrarM();
@@ -45,14 +47,14 @@ public class JornadaController {
 		model.addAttribute("zona",lista3);
 		model.addAttribute("grupo",lista4);
 		
-		return "grupo02/Jornada";
+		return "jornada/Editar";
 	}
 	
 	
-	@GetMapping("/mostrarjornada")
+	@GetMapping("/administrar")
 	private String MostrarJornada(Model model) {
 		List<Jornadas> jornada=JornadaService.mostrar();
 		model.addAttribute("exito",jornada);
-		return "/grupo02/MostrarJornada";
+		return "jornada/Administrar";
 	}
 }

@@ -16,12 +16,12 @@ public class EncuestadorLlenadoController {
 	@Autowired
 	private IEncuestadorLlenado encuesta;
 	
-	@GetMapping("/llenado")
-	private String llenado(Model model)
-	{
-		List<Asignacion02> lista = encuesta.mostrar();
-		model.addAttribute("encuestas",lista);
-		return "grupo01/EncuestadorLlenado";
-	}
+	// @GetMapping("/llenado")
+	// private String llenado(Model model)
+	// {
+	// 	List<Asignacion02> lista = encuesta.mostrar();
+	// 	model.addAttribute("encuestas",lista);
+	// 	return "grupo01/EncuestadorLlenado";
+	// }
 
 }

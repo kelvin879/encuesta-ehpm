@@ -1,4 +1,4 @@
-package sv.gob.controller.controlCalidad;
+package sv.gob.controller.revision;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class ControlEncuestaController {
 	{
 		List<Encuesta> listaRevision=ControlEncuestaService.mostrarRevision();
 		model.addAttribute("revision",listaRevision);
-		return "grupo02/EncuestasRevision";
+		return "revision/EncuestasRevision";
 	}
 
 
@@ -30,6 +30,6 @@ public class ControlEncuestaController {
 	{
 		List<Encuesta> listaPila=ControlEncuestaService.mostrarPila();
 		model.addAttribute("revisar",listaPila);
-		return "grupo02/EncuestasRevisar";
+		return "revision/EncuestasRevisar";
 	}
 }

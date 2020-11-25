@@ -69,8 +69,8 @@
                                     <td th:text="${lista.dui}"></td>
                                     <td th:text="${lista.rol}"></td>
                                     <td>
-                                        <a th:href="@{/usuario/editar}" class="btn btn-outline-dark" role="button" aria-pressed="true"><i class="fas fa-edit"></i></a>
-                                        <button type="button" class="btn btn-outline-dark">
+                                        <a th:href="@{/usuario/editar}" class="btn btn-outline-dark" role="button" data-toggle="tooltip" data-placement="bottom" title="Editar Usuario"><i class="fas fa-edit"></i></a>
+                                        <button type="button" class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Eliminar Usuario">
                                             <i class="fas fa-trash-alt"></i>
                                         </button>
                                     </td>
@@ -97,8 +97,7 @@
                                 </a>
                                 </li>
                             </ul>
-                        </nav>
-                        </div>
+                        </nav>                        
                     </div>
                 </div>
             </div>

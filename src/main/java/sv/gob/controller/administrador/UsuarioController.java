@@ -6,34 +6,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import sv.gob.models.Usuarios;
 import sv.gob.service.administrador.IUsuarioService;
 
 @Controller
+@RequestMapping("/usuario")
 public class UsuarioController {
 	
 	@Autowired
 	private IUsuarioService usuario;
 	
-	@GetMapping("/usuario/create")
+	@GetMapping("/crear")
 	private String CrearUsuario(Model model)
 	{
-		return "grupo01/Usuario";
+		return "usuario/Crear";
 	}
 	
-	@GetMapping("/usuario/update")
+	@GetMapping("/editar")
 	private String EditarUsuario(Model model)
 	{
-		return "grupo01/Usuario";
+		return "usuario/Editar";
 	}
 	
-	@GetMapping("/usuarios")
+	@GetMapping("/administrar")
 	private String MostrarUsuario(Model model)
 	{
 		List<Usuarios> listaMostrarUsuario = usuario.mostrar();
 		model.addAttribute("mostrarUsuario",listaMostrarUsuario);
-		return "grupo01/AdministrarUsuario";
+		return "usuario/Administrar";
 	}
 
 }

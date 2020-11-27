@@ -66,7 +66,13 @@
                                     </td>
                                     <td th:text="${jornada.grupo}"></td>
                                     <td>
-                                        <button type="submit" class=" btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Realizar aclaracion"><i class="fas fa-book"></i></button>
+                                        <a 
+                                            th:href="@{/jornada/cuestionarios/administrar}"
+                                            class="btn btn-outline-dark"
+                                            data-toggle="tooltip"
+                                            data-placement="bottom"
+                                            title="Cuestionarios"
+                                        ><i class="fas fa-book"></i></a>
                                     </td>
                                     <td>
                                         <a th:href="@{/jornada/editar}" class="btn btn-outline-dark" role="button" data-toggle="tooltip" data-placement="bottom" title="Editar Jornada"><i class="fas fa-edit"></i></a>

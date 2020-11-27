@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
-    <title>Asignacion02</title>
+    <title>Asignacion</title>
 
     <!-- Hojas css -->
     <!-- Latest compiled and minified CSS -->
@@ -11,9 +11,9 @@
   </head>
 
   <body>
-    <!-- Barra de navegación -->
+    <!-- Barra de navegaciï¿½n -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" ><i class="fas fa-laptop-code"></i> Asignacion04</a>
+      <a class="navbar-brand" ><i class="fas fa-laptop-code"></i> Asignacion</a>
 
     </nav>
     
@@ -26,12 +26,12 @@
      <h6>Unidad de Metodologia</h6>
       </div>
      <div class="col-md-2">
-     <a href="AgregarJornada.html">
-     <button type="submit" 
+     <a 
+      th:href="@{/crearmuestra}"
                 class="fas fa-plus btn btn-dark " 
                 data-toggle="tooltip" 
                 data-placement="bottom" 
-                title="Nueva">Nueva muestra</button> </a> </div>    
+                title="Nueva">Nueva muestra</a> </div>    
      </div>
      <br>
     <div class="card ">

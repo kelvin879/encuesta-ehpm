@@ -1,4 +1,4 @@
-package sv.gob.controller;
+package sv.gob.controller.unidadMetodologia;
 
 import java.util.List;
 

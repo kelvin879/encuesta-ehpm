@@ -11,13 +11,13 @@ public class JornadasCuestionarios {
 	@GetMapping("/administrar")
 	private String adminCuestionariosDeJornada()
 	{
-		return "jornadas_cuestionarios/Administrar";
+		return "jornadasCuestionarios/Administrar";
 	}
 
 	@GetMapping("/agregar")
 	private String agregarCuestionariosDeJornada()
 	{
-		return "jornadas_cuestionarios/Agregar";
+		return "jornadasCuestionarios/Agregar";
 	}
 
 }

@@ -39,58 +39,69 @@
                         <small class="text-danger">* Obligatorio</small>
                     </div>
                     <div class="card-body">
-                        <form id="formularioEstudiante" action="" method="GET">
+                        <form id="formJornada" action="" method="GET">
                             <div class="form-row">
-                                <!--Fecha Inicio-->
-                                <div class="form-group col-md-6">
-                                    <label for="inicio">Fecha de Inicio: <span class="text-danger">*</span> </label>
-                                    <input class="form-control" type="date" value="20/11/2020">
-                                </div>
-                                <!--Fecha Final-->
-                                <div class="form-group col-md-6">
-                                    <label for="fin">Fecha de fin: <span class="text-danger">*</span></label>
-                                    <input class="form-control" type="date">
-                                </div>
+                              <!--Zona de operacion-->
+                              <div class="form-group col-md-6">
+                                <label for="carrera">Zona de operación: <span class="text-danger">*</span></label><br>
+                                <select class="form-control">
+                                  <option th:each="lista3:${zona}">
+                                    <td th:text="${lista3.nombre}"></td>
+                                  </option>
+                                </select>
+                              </div>
+                              <!--Fecha Inicio-->
+                              <div class="form-group col-md-3">
+                                <label for="inicio">Fecha de Inicio: <span class="text-danger">*</span> </label>
+                                <input class="form-control" type="date">
+                              </div>
+                              <!--Fecha Final-->
+                              <div class="form-group col-md-3">
+                                <label for="fin">Fecha de fin: <span class="text-danger">*</span></label>
+                                <input class="form-control" type="date">
+                              </div>
                             </div>
                             <div class="form-row">
-                                <!--Zona de operacion-->
-                                <div class="form-group col-md-6">
-                                    <label for="carrera">Zona de operacion: <span class="text-danger">*</span></label><br>
-                                    <select class="form-control">
-                                        <option th:each="lista3:${zona}">
-                                            <td th:text="${lista3.nombre}"></td>
-                                        </option>
-                                    </select>
-                                </div>
-                                <!--Departamentos-->
-                                <div class="form-group col-md-6">
-                                    <label for="carrera">Departamentos: <span class="text-danger">*</span></label><br>
-                                    <select class="form-control" id="">
-                                        <option th:each="lista:${departamento}">
-                                            <td th:text="${lista.nombre}"></td>
-                                        </option>
-                                    </select>
-                                </div>
+                              <!--Departamentos-->
+                              <div class="form-group col-md-6">
+                                <label for="carrera">Departamentos: <span class="text-danger">*</span></label><br>
+                                <select class="form-control" id="">
+                                  <option th:each="lista:${departamento}">
+                                    <td th:text="${lista.nombre}"></td>
+                                  </option>
+                                </select>
+                              </div>
+                              <!--Municipio-->
+                              <div class="form-group col-md-6">
+                                <label for="carrera">Municipios: <span class="text-danger">*</span></label><br>
+                                <select class="form-control">
+                                  <option th:each="lista2:${municipio}">
+                                    <td th:text="${lista2.nombre}"></td>
+                                  </option>
+                                </select>
+                              </div>
                             </div>
                             <div class="form-row">
-                                <!--Municipio-->
-                                <div class="form-group col-md-6">
-                                    <label for="carrera">Municipios: <span class="text-danger">*</span></label><br>
-                                    <select class="form-control">
-                                        <option th:each="lista2:${municipio}">
-                                            <td th:text="${lista2.nombre}"></td>
-                                        </option>
-                                    </select>
-                                </div>
-                                <!--Grupo-->
-                                <div class="form-group col-md-6">
-                                    <label for="carrera">Grupos: <span class="text-danger">*</span></label><br>
-                                    <select class="form-control">
-                                        <option th:each="lista4:${grupo}">
-                                            <td th:text="${lista4.nombre}"></td>
-                                        </option>
-                                    </select>
-                                </div>
+                              <!--Grupo-->
+                              <div class="form-group col-md-6">
+                                <label for="carrera">Grupo: <span class="text-danger">*</span></label><br>
+                                <select class="form-control">
+                                  <option th:each="lista4:${grupo}">
+                                    <td th:text="${lista4.nombre}"></td>
+                                  </option>
+                                </select>
+                              </div>
+                              <!-- Cantidad de cuestionarios -->
+                              <div class="form-group col-md-6">
+                                <label for="inicio">Cuestionarios a llenar: <span class="text-danger">*</span> </label>
+                                <input
+                                  class="form-control"
+                                  type="number"
+                                  min="1"
+                                  name="cantCuestionario"
+                                  placeholder="Cantidad de cuestionarios a llenar"
+                                >
+                              </div>
                             </div>
                         </form>
                     </div>

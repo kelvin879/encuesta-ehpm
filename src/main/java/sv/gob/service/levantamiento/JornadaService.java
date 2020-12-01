@@ -21,18 +21,18 @@ public class JornadaService implements IJornadaService{
 		listaJornada = new LinkedList<>();
 		
 		//mj = mostrar jornadas
-		Jornadas mj1 = new Jornadas("03/11/2020","20/11/2020","Grupo 01");
-		Jornadas mj2 = new Jornadas("03/11/2020","20/11/2020","Grupo 01");
-		Jornadas mj3 = new Jornadas("03/11/2020","20/11/2020","Grupo 02");
-		Jornadas mj4 = new Jornadas("03/11/2020","20/11/2020","Grupo 02");
-		Jornadas mj5 = new Jornadas("03/11/2020","20/11/2020","Grupo 02");
-		Jornadas mj6 = new Jornadas("03/11/2020","20/11/2020","Grupo 02");
-		Jornadas mj7 = new Jornadas("03/11/2020","20/11/2020","Grupo 02");
-		Jornadas mj8 = new Jornadas("03/11/2020","20/11/2020","Grupo 03");
-		Jornadas mj9 = new Jornadas("03/11/2020","20/11/2020","Grupo 03");
-		Jornadas mj10 = new Jornadas("03/11/2020","20/11/2020","Grupo 03");
-		Jornadas mj11 = new Jornadas("03/11/2020","20/11/2020","Grupo 03");
-		Jornadas mj12 = new Jornadas("03/11/2020","20/11/2020","Grupo 03");
+		Jornadas mj1 = new Jornadas("03/11/2020","20/11/2020","Grupo 01", 25);
+		Jornadas mj2 = new Jornadas("03/11/2020","20/11/2020","Grupo 01", 25);
+		Jornadas mj3 = new Jornadas("03/11/2020","20/11/2020","Grupo 02", 25);
+		Jornadas mj4 = new Jornadas("03/11/2020","20/11/2020","Grupo 02", 25);
+		Jornadas mj5 = new Jornadas("03/11/2020","20/11/2020","Grupo 02", 25);
+		Jornadas mj6 = new Jornadas("03/11/2020","20/11/2020","Grupo 02", 25);
+		Jornadas mj7 = new Jornadas("03/11/2020","20/11/2020","Grupo 02", 25);
+		Jornadas mj8 = new Jornadas("03/11/2020","20/11/2020","Grupo 03", 25);
+		Jornadas mj9 = new Jornadas("03/11/2020","20/11/2020","Grupo 03", 25);
+		Jornadas mj10 = new Jornadas("03/11/2020","20/11/2020","Grupo 03", 25);
+		Jornadas mj11 = new Jornadas("03/11/2020","20/11/2020","Grupo 03", 25);
+		Jornadas mj12 = new Jornadas("03/11/2020","20/11/2020","Grupo 03", 25);
 		
 		listaJornada.add(mj1);
 		listaJornada.add(mj2);

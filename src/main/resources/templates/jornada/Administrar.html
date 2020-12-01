@@ -65,7 +65,8 @@
                                         <button type="submit" class=" btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Ubicacion"><i class="fas fa-map-marker-alt"></i></button>
                                     </td>
                                     <td th:text="${jornada.grupo}"></td>
-                                    <td>
+                                    <td th:text="${jornada.getCantCuestionarios()}"></td>
+                                    <!-- <td>
                                         <a 
                                             th:href="@{/jornada/cuestionarios/administrar}"
                                             class="btn btn-outline-dark"
@@ -73,7 +74,7 @@
                                             data-placement="bottom"
                                             title="Cuestionarios"
                                         ><i class="fas fa-book"></i></a>
-                                    </td>
+                                    </td> -->
                                     <td>
                                         <a th:href="@{/jornada/editar}" class="btn btn-outline-dark" role="button" data-toggle="tooltip" data-placement="bottom" title="Editar Jornada"><i class="fas fa-edit"></i></a>
                                         <button type="button" class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Eliminar Jornada">

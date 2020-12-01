@@ -4,14 +4,16 @@ public class Jornadas {
 	private String fechaI;
 	private String fechaF;
 	private String grupo;
+	private int cantCuestionarios;
 	
 	public Jornadas() {}
 	
-	public Jornadas(String fechaI,String fechaF,String grupo) 
+	public Jornadas(String fechaI,String fechaF,String grupo, int cantCuestionarios) 
 	{
 		setFechaI(fechaI);
 		setFechaF(fechaF);
 		setGrupo(grupo);
+		setCantCuestionarios(cantCuestionarios);
 	}
 	
 	public String getFechaI() {
@@ -31,5 +33,11 @@ public class Jornadas {
 	}
 	public void setGrupo(String grupo) {
 		this.grupo = grupo;
+	}
+	public int getCantCuestionarios() {
+		return cantCuestionarios;
+	}
+	public void setCantCuestionarios(int cantCuestionarios) {
+		this.cantCuestionarios = cantCuestionarios;
 	}
 }

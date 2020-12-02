@@ -26,7 +26,7 @@ public class JefeCampoController {
 	{
 		List<PilaDeEncuestas> lista = pila.mostrar();
 		model.addAttribute("encuestas",lista);
-		return "grupo01/PilaEncuestas";
+		return "desechadas/PilaEncuestas";
 	}
 	
 	@GetMapping("/pendiente")

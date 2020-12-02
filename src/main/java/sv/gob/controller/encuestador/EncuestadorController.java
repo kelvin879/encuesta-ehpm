@@ -42,4 +42,12 @@ public class EncuestadorController {
 		model.addAttribute("encuestas",lista);
 		return "encuestador/EncuestadorLlenado";
 	}
+
+	@GetMapping("/llenado/seccion")
+	private String seccion(Model model)
+	{
+		List<Asignacion02> lista = encuesta.mostrar();
+		model.addAttribute("encuestas",lista);
+		return "encuestador/EncuestadorLlenadoSeccion";
+	}
 }

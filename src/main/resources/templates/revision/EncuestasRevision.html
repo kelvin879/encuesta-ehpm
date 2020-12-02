@@ -54,7 +54,7 @@
               <tr>
                 <th scope="col">Identificacion</th>
                 <th scope="col">Fecha</th>
-                <th scope="col">Encuesta</th>
+                <th scope="col">Encuestador</th>
                 <th scope="col">Acciones</th>
               </tr>
             </thead>
@@ -65,15 +65,15 @@
                 <td th:text="${listaRevision.Nombre}"></td>
 
                 <td>
-                  <button
+                  <a
                     type="submit"
                     class="btn btn-outline-dark"
                     data-toggle="tooltip"
                     data-placement="bottom"
                     title="Mas Informacion"
-                  ><i class="fas fa-info-circle"></i></button>
+                  ><i class="fas fa-info-circle"></i></a>
 
-                  <a class="btn btn-outline-dark" role="button"  title="Realizar revisión" data-toggle="tooltip" data-placement="bottom" ><i class="fas fa-check-double"></i></a>
+                  <a th:href="@{/revision/encuesta}" class="btn btn-outline-dark" role="button"  title="Realizar revisión" data-toggle="tooltip" data-placement="bottom" ><i class="fas fa-check-double"></i></a>
                 </td>
               </tr>
             </tbody>

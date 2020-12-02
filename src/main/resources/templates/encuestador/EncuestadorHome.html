@@ -33,12 +33,10 @@
       titulo=~{ :: .titulo}, btnPrincipal=~{ :: .btnPrincipal}, subTit=~{ :: .subTit}
     )">
       <h2 class="titulo">EHPM 2020</h2>
-			<a
-				th:href="@{/jornada/crear}"
-				class="btn btn-dark btn-sm btnPrincipal"
-			><i class="fas fa-plus"></i> Iniciar Encuesta</a>     
+	<button class="btn btn-dark btn-sm btnPrincipal btn-modal" type="button" data-toggle="modal" data-target="#muestra" data-whatever="@mdo"><i class="	fas fa-plus"></i>	Iniciar Encuesta</button>     
       <h5 class="subTit">Encuestador: Juan Perez</h5>      
 		</div>
+	
 
 		<div class="row mb-4">
       <div class="col-md-12">
@@ -77,10 +75,38 @@
 						</table>		
 					</div>
 				</div>
-      </div>
+      		</div>
 		</div>
 	</div>
-		
+<div class="modal fade" id="muestra" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Observaciones realizadas</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>                        					
+						<!--Identificacion-->
+						<div class="form-group">
+							<label for="inicio">Identificacion muestral: <span class="text-danger">*</span> </label>
+						<input class="form-control" >
+						<!--Domicilio-->    
+						<div class="form-group">
+							<label for="inicio">Domicilio: <span class="text-danger">*</span> </label>
+							<input class="form-control" >
+						</div>
+					</form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
+                    <a th:href="@{/encuestador/llenado}" type="button" class="btn btn-dark">Crear</a>                   
+                </div>			
+            </div>
+        </div>
+    </div>		
 	<!-- Scripts generales -->
 	<div th:replace="base/general :: scripts"></div>
 </body>

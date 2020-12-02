@@ -34,7 +34,7 @@ public class MuestraController {
 		model.addAttribute("zona",lista3);
 		model.addAttribute("grupo",lista4);
 		
-		return "grupo02/AgregarMuestra";
+		return "desechadas/AgregarMuestra";
 	}
 	
 	@GetMapping("/editarmuestra")
@@ -46,13 +46,13 @@ public class MuestraController {
 		model.addAttribute("municipio",lista2);
 		model.addAttribute("zona",lista3);
 		
-		return "grupo02/AgregarMuestra";
+		return "desechadas/AgregarMuestra";
 	}
 	
 	@GetMapping("/mostrarrmuestra")
 	private String MostrarMuestra(Model model) {
 		List<Grupo> lista4 = ie.mostrarG();
 		model.addAttribute("grupo",lista4);
-		return "grupo02/MostrarMuestras";
+		return "desechadas/MostrarMuestras";
 	}
 }

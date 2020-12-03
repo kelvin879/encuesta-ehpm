@@ -16,6 +16,13 @@ public class LoginController {
 		return "login/login.html";
 	}
 
+	@GetMapping("/home")
+	private String Inicio(Model model) {
+        
+        
+		return "login/Home.html";
+	}
+
     
     
 }

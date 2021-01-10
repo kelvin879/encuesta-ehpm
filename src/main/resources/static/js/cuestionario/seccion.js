@@ -4,7 +4,7 @@ $(document).ready(function(){
 });
 
 
-function editarSeccion(idSeccion, codigo, nombre, descripcion){
+/*function editarSeccion(idSeccion, codigo, nombre, descripcion){
     location.href = '/cuestionario/editar/' + idSeccion
    // $("#formSeccion").attr('action',  '/cuestionario/editar/' + idSeccion);
     $("#nombre").val(nombre);
@@ -15,7 +15,7 @@ function editarSeccion(idSeccion, codigo, nombre, descripcion){
     $([document.documentElement, document.body]).animate({
         scrollTop: $("#cardDetalleSeccion").offset().top
     }, 100);
-}
+}*/
 
 function eliminarSeccion(idSeccion){
     Swal.fire({
@@ -43,8 +43,3 @@ function btnLimpiarSeccion(){
     $("#btnAccionSeccion").html('Guardar');
 
 }
-
-
-$('.btn-proveedor').on('click', function() {
-    $('#' + $(this).attr('data-modal')).modal('show');
-});

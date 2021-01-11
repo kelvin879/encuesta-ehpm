@@ -24,10 +24,19 @@
         <a class="nav-link" href="formulario.html">Formulario</a>
       </li> -->
     </ul>
-	</div>
-	
+	</div>	
+
 	<!-- Contenido_de_la_página -->
   <div class="container">
+
+	 <!-- Ruta del contendio -->
+    <ol th:replace="base/general :: ruta_contenido(
+      ruta=~{ :: .ruta}, ruta2=~{ :: .ruta2})">
+        <!-- Ruta de la página -->              
+    	<div class="ruta">Encuesta</div>
+		<div class="ruta2"></div>	
+    </ol>
+
     <!-- Título de la pantalla -->
     <div th:replace="base/general :: titulo_pantalla(
       titulo=~{ :: .titulo}, btnPrincipal=~{ :: .btnPrincipal}, subTit=~{ :: .subTit}

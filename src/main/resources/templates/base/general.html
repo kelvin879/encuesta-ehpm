@@ -31,52 +31,38 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- Sección de elementos --> 
-      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">    
-        <li class="nav-item ">
-          <a class="nav-link" th:href="@{/home}">Inicio <span class="sr-only">(current)</span></a>
-        </li>     
+      <ul class="navbar-nav ml-auto mt-2 mt-lg-0"> 
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Administración
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" th:href="@{/miembros/administrar}">Miembros</a>
+                <a class="dropdown-item" th:href="@{/grupo/administrar}">Grupos</a> 
+                <a class="dropdown-item"  th:href="@{/jornada/administrar}">Jornadas</a>
+                <a class="dropdown-item" th:href="@{/usuario/administrar}">Usuarios</a>
+                <a class="dropdown-item" th:href="@{/usuario/administrar}">Permisos</a>                                                
+              </div>
+          </li>            
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="administrador" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Administrador
+            Encuestas
             </a>
             <div class="dropdown-menu" aria-labelledby="administrador">
-              <a class="dropdown-item"  th:href="@{/encuesta/administrar}">Encuesta</a>    
-              <a class="dropdown-item" th:href="@{/usuario/administrar}">Usuario</a>                        
-          </li>
-           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Unidad de Metodología
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item"  th:href="@{/encuesta/administrar}">Encuesta</a> 
               <a class="dropdown-item" th:href="@{/cuestionario/disenyo}">Formulario</a>              
-            </div>
-          </li>  
-           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="administrador" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Coordinador
-            </a>
-            <div class="dropdown-menu" aria-labelledby="administrador">              
-              <a class="dropdown-item"  th:href="@{/grupo/administrar}">Grupos</a> 
-              <a class="dropdown-item"  th:href="@{/grupo/miembros/administrar}">Miembros de Grupos</a>
-              <a class="dropdown-item"  th:href="@{/jornada/administrar}">Jornadas</a> 
-              <a class="dropdown-item"  th:href="@{/revisar}">Revisar</a> 
-              
-          </li>    
+              <a class="dropdown-item" th:href="@{/encuestador/home}">Llenado de encuesta</a>              
+            </div>                                   
+          </li>                         
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Jefe de Campo
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item"  th:href="@{/revision}">Revisión</a> 
+            <a class="nav-link dropdown-toggle" href="#" id="administrador" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Revisiones
+            </a>  
+            <div class="dropdown-menu" aria-labelledby="administrador">    
+              <a class="dropdown-item"  th:href="@{/revision}">Revisión</a>    
+              <a class="dropdown-item"  th:href="@{/revisar}">Revisar</a>                    
             </div>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Encuestador
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" th:href="@{/encuestador/home}">Llenado de encuesta</a>                                    
-          </li>         
       </ul>
 
       <!-- Sección de usuario -->
@@ -88,14 +74,27 @@
         <!-- Menú -->
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
           <button class="dropdown-item" type="button">Perfil</button>
-          <div class="dropdown-divider"></div>
-          <button class="dropdown-item" type="button">Cerrar sesión</button>
+          <div class="dropdown-divider"></div>          
+          <a class="dropdown-item"  th:href="@{/logout}">Cerrar sesión</a>
         </div>       	
       </div>
     </div>
   </nav>
 
   <div class="container">
+      <!-- Ruta del contendio -->
+        <ol th:fragment="ruta_contenido(ruta)" class="breadcrumb">
+          <!-- Formato para la ruta del contenido para la herencia -->     
+          <li class="breadcrumb-item">
+            <a th:href="@{/}">Inicio</a>
+          </li> 
+          <li class="breadcrumb-item active">
+            <div th:replace="${ruta}"></div>
+          </li>
+          <li class="breadcrumb-item active">
+            <div th:include="${ruta2}"></div>
+          </li>
+        </ol>
     <!-- Título de la pantalla  -->
     <div th:fragment="titulo_pantalla(titulo, subTit, btnPrincipal)" class="mb-4">
       <div class="row">

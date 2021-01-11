@@ -38,13 +38,13 @@
             </h5>
           </div>
           <div class="card-body">            
-            <form id="formLogin" action="" method="GET">
+            <form id="formLogin" th:action="@{/login}" method="POST">
               <!-- Usuario -->
               <div class="form-group col-md-12 mb-4">
                 <input
                   class="form-control"
                   type="text"
-                  name="usuario"
+                  name="username"
                   placeholder="Nombre de usuario"
                   
                 >
@@ -55,19 +55,27 @@
                 <input
                   class="form-control"
                   type="password"
-                  name="contraseña"
+                  name="password"
                   placeholder="Contraseña"
                   
                 >
               </div>
 
-              <div class="form-group col-md-12">
+              <!--<div class="form-group col-md-12">
                 <a th:href="@{/home}" type="submit" class="btn btn-primary form-control">
                   Iniciar sesión
-                </a>
+                </a>-->
+                <button class="btn btn-primary form-control" type="submit">Iniciar sesión</button>
               </div>
                 
             </form>
+            <!--<form name="form" th:action="@{/login}" method="POST">
+                Usuario:<br>
+                <input type="text" name="username" ><br>
+                Password:<br>
+                <input type="password" name="password"><br>
+                <input name="submit" type="submit" value="Ingresar" >
+          </form>-->
           </div>
         </div>
 

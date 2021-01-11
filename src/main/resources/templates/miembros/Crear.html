@@ -50,42 +50,43 @@
                         <small class="text-danger">* Obligatorio</small>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form id="formMiembros" th:action="@{/miembros/save}" th:object="${miembros}" method="post">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="codigo">Codigo: <span class="text-danger">*</span></label><br>
-                                    <input type="text" class="form-control" id="nombre" placeholder="Nombre" name="codigo">
+                                    <input type="hidden" th:field="*{id}">
+                                    <input type="text" class="form-control" id="codigo" placeholder="Código" name="codigo" th:field="*{codigoMiembros}">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="correo">Correo electronico:<span class="text-danger">*</span></label><br>
-                                    <input type="text" class="form-control" placeholder="Apellido" id="apellido" name="correo">
+                                    <input type="text" class="form-control" placeholder="ejemplo@gmail.com" id="correo" name="correo" th:field="*{correoMiembros}">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="codigo">Nombre: <span class="text-danger">*</span></label><br>
-                                    <input type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombre">
+                                    <input type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombre" th:field="*{nombreMiembros}">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="correo">Apellido:<span class="text-danger">*</span></label><br>
-                                    <input type="text" class="form-control" placeholder="Apellido" id="apellido" name="apellido">
+                                    <input type="text" class="form-control" placeholder="Apellido" id="apellido" name="apellido" th:field="*{apellidoMiembros}">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <label for="correo">Dui:<span class="text-danger">*</span></label><br>
-                                    <input type="text" class="form-control" placeholder="Apellido" id="apellido" name="dui">
+                                    <input type="text" class="form-control" placeholder="99999999-9" id="dui" name="dui" th:field="*{duiMiembros}">
                                 </div>                                
                             </div>
-                    </div>
-                    </form>
+                    </div>                    
                     <div class="card-footer text-muted">
                         <div class="float-right">
                             <a th:href="@{/miembros/administrar}" type="button" class="btn btn-outline-dark">
                         Cancelar</a>
-                    <button type="submit" class="btn btn-dark">Guardar</button>
+                    		<button type="submit" class="btn btn-dark">Guardar</button>
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>

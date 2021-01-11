@@ -1,7 +1,7 @@
-$(document).ready(function(){
+/*$(document).ready(function(){
     $("#formSeccion").attr('action', '/cuestionario/save');
     $('.selectpicker').selectpicker('refresh')
-});
+});*/
 
 
 /*function editarSeccion(idSeccion, codigo, nombre, descripcion){
@@ -34,7 +34,7 @@ function eliminarSeccion(idSeccion){
 }
 
 
-function btnLimpiarSeccion(){
+/*function btnLimpiarSeccion(){
     $("#formSeccion").attr('action', '@{/cuestionario/save}');
     $("#nombre").val("");
     $("#codigo").val("");
@@ -43,3 +43,4 @@ function btnLimpiarSeccion(){
     $("#btnAccionSeccion").html('Guardar');
 
 }
+*/

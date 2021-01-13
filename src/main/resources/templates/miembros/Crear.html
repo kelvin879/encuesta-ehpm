@@ -56,33 +56,38 @@
                                     <label for="codigo">Codigo: <span class="text-danger">*</span></label><br>
                                     <input type="hidden" th:field="*{id}">
                                     <input type="text" class="form-control" id="codigo" placeholder="Código" name="codigo" th:field="*{codigoMiembros}">
+                                    <small class="form-text text-danger" th:if="${#fields.hasErrors('codigoMiembros')}" th:errors="*{codigoMiembros}"></small>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="correo">Correo electronico:<span class="text-danger">*</span></label><br>
                                     <input type="text" class="form-control" placeholder="ejemplo@gmail.com" id="correo" name="correo" th:field="*{correoMiembros}">
+                                    <small class="form-text text-danger" th:if="${#fields.hasErrors('correoMiembros')}" th:errors="*{correoMiembros}"></small>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="codigo">Nombre: <span class="text-danger">*</span></label><br>
                                     <input type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombre" th:field="*{nombreMiembros}">
+                                    <small class="form-text text-danger" th:if="${#fields.hasErrors('nombreMiembros')}" th:errors="*{nombreMiembros}"></small>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="correo">Apellido:<span class="text-danger">*</span></label><br>
                                     <input type="text" class="form-control" placeholder="Apellido" id="apellido" name="apellido" th:field="*{apellidoMiembros}">
+                                    <small class="form-text text-danger" th:if="${#fields.hasErrors('apellidoMiembros')}" th:errors="*{apellidoMiembros}"></small>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <label for="correo">Dui:<span class="text-danger">*</span></label><br>
-                                    <input type="text" class="form-control" placeholder="99999999-9" id="dui" name="dui" th:field="*{duiMiembros}">
+                                    <input type="text" class="form-control" maxlength=10 placeholder="99999999-9" id="dui" name="dui" th:field="*{duiMiembros}">
+                                    <small class="form-text text-danger" th:if="${#fields.hasErrors('duiMiembros')}" th:errors="*{duiMiembros}"></small>
                                 </div>                                
                             </div>
                     </div>                    
                     <div class="card-footer text-muted">
                         <div class="float-right">
-                            <a th:href="@{/miembros/administrar}" type="button" class="btn btn-outline-dark">
-                        Cancelar</a>
+                            <a th:href="@{/miembros/crear}" type="button" class="btn btn-outline-dark">
+                        Limpiar</a>
                     		<button type="submit" class="btn btn-dark">Guardar</button>
                         </div>
                     </div>

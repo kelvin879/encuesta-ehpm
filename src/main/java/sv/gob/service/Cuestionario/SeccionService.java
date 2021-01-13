@@ -1,4 +1,4 @@
-package sv.gob.service.Cuestionario;
+package sv.gob.service.cuestionario;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import sv.gob.models.Cuestionario.Seccion;
-import sv.gob.repository.Cuestionario.SeccionRepository;
+import sv.gob.models.cuestionario.Seccion;
+import sv.gob.repository.cuestionario.SeccionRepository;
 
 @Service
 public class SeccionService implements ISeccionService {

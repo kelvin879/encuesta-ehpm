@@ -59,24 +59,16 @@
                         
                         <table class="table text-center table-striped">
                             <thead>
-                                <tr>
-                                    <th>Codigo</th>
-                                    <th>Apellidos</th>
-                                    <th>Nombre</th>
-                                    <th>Correo</th>
-                                    <th>DUI</th>
-                                    <th>Rol</th>
+                                <tr>                                    
+                                    <th>Miembro</th>
+                                    <th>Permiso</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr th:each="lista:${mostrarUsuario}">
-                                    <td th:text="${lista.codigo}"></td>
-                                    <td th:text="${lista.apellidos}"></td>
-                                    <td th:text="${lista.nombres}"></td>
-                                    <td th:text="${lista.correo}"></td>
-                                    <td th:text="${lista.dui}"></td>
-                                    <td th:text="${lista.rol}"></td>
+                                <tr th:each="usuario:${usuarios}">                                    
+                                    <td th:text="${usuario.username}"></td>
+                                    <td th:text="${usuario.password}"></td>                              >
                                     <td>
                                         <a th:href="@{/usuario/editar}" class="btn btn-outline-dark" role="button" data-toggle="tooltip" data-placement="bottom" title="Editar Usuario"><i class="fas fa-edit"></i></a>
                                         <button type="button" class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Eliminar Usuario">

@@ -1,5 +1,7 @@
 package sv.gob.models.miembros;
 
+import javax.validation.constraints.Pattern;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -8,10 +10,15 @@ public class Miembros {
 	
 	@Id
 	private String id;
+	@Pattern(regexp = "^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ0-9 ]+$")
 	private String codigoMiembros;
+	@Pattern(regexp = "^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ0-9 ]+$")
 	private String nombreMiembros;
+	@Pattern(regexp = "^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ0-9 ]+$")
 	private String apellidoMiembros;
+	@Pattern(regexp = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$")
 	private String correoMiembros;
+	@Pattern(regexp = "^[0-9]{8}-[0-9]{1}$")
 	private String duiMiembros;
 	public String getId() {
 		return id;

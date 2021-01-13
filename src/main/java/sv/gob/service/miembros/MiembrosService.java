@@ -6,9 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import sv.gob.models.Cuestionario.Seccion;
+import sv.gob.models.cuestionario.Seccion;
 import sv.gob.models.miembros.Miembros;
-import sv.gob.repository.Cuestionario.SeccionRepository;
+import sv.gob.repository.cuestionario.SeccionRepository;
 import sv.gob.repository.miembros.MiembrosRepository;
 
 @Service

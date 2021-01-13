@@ -14,9 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
-import sv.gob.models.Cuestionario.Seccion;
-import sv.gob.service.Cuestionario.ISeccionService;
+import sv.gob.models.cuestionario.Seccion;
+import sv.gob.service.cuestionario.ISeccionService;
 
 
 @Controller

@@ -1,8 +1,8 @@
-package sv.gob.service.Cuestionario;
+package sv.gob.service.cuestionario;
 
 import java.util.List;
 
-import sv.gob.models.Cuestionario.Seccion;
+import sv.gob.models.cuestionario.Seccion;
 
 
 public interface ISeccionService {

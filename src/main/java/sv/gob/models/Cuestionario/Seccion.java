@@ -1,6 +1,5 @@
-package sv.gob.models.Cuestionario;
+package sv.gob.models.cuestionario;
 
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
 import org.springframework.data.annotation.Id;

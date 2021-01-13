@@ -5,8 +5,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import sv.gob.models.grupo02.Jornadas;
-import sv.gob.service.levantamiento.IJornadaService;
 
 @Service
 public class Extensiones implements IExtensiones{

@@ -26,18 +26,19 @@
     </div>
     <div class="container">
 
- <!-- Ruta del contendio -->
-    <ol th:replace="base/general :: ruta_contenido(
+        <!-- Ruta del contendio -->
+        <ol th:replace="base/general :: ruta_contenido(
       ruta=~{ :: .ruta}, ruta2=~{ :: .ruta2})">
-        <!-- Ruta de la página -->              
-    	<div class="ruta">
-       <a th:href="@{/usuario/administrar}">Usuarios</a>
-       </div>
-		<div class="ruta2">Crear</div>	
-    </ol>
+            <!-- Ruta de la página -->
+            <div class="ruta">
+                <a th:href="@{/usuario/administrar}">Usuarios</a>
+            </div>
+            <div class="ruta2">Crear</div>
+        </ol>
 
         <!-- Título de la pantalla -->
-        <div th:replace="base/general :: titulo_pantalla(titulo=~{ :: .titulo}, btnPrincipal=~{ :: .btnPrincipal}, subTit=~{ :: .subTit})">
+        <div
+            th:replace="base/general :: titulo_pantalla(titulo=~{ :: .titulo}, btnPrincipal=~{ :: .btnPrincipal}, subTit=~{ :: .subTit})">
             <h2 class="titulo">Registrar Usuario</h2>
             <div class="btnPrincipal"></div>
             <h5 class="subTit"></h5>
@@ -50,57 +51,40 @@
                         <small class="text-danger">* Obligatorio</small>
                     </div>
                     <div class="card-body">
-                        <form>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="codigo">Codigo: <span class="text-danger">*</span></label><br>
-                                    <input type="text" class="form-control" id="nombre" placeholder="Nombre" name="codigo">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="correo">Correo electronico:<span class="text-danger">*</span></label><br>
-                                    <input type="text" class="form-control" placeholder="Apellido" id="apellido" name="correo">
-                                </div>
+                        <form method="POST" id="frmUsuario" action="">                           
+                            <div class="form-group">
+                                <label for="miembro_id" class="col-form-label">Miembro: <span
+                                        class="text-danger">*</span></label><br>
+
+                                <!-- Buscar miembro -->                                
+                                <select id="miembro_id" class="form-control selectBuscar" name="miembro_id"
+                                    data-placeholder="Seleccione un miembro">                                                     
+                                    <option value="{{ miembro.idMiembro }}">                                        
+                                    </option>                                    
+                                </select>      
+                                                                                  
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="codigo">Nombre: <span class="text-danger">*</span></label><br>
-                                    <input type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombre">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="correo">Apellido:<span class="text-danger">*</span></label><br>
-                                    <input type="text" class="form-control" placeholder="Apellido" id="apellido" name="apellido">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="correo">Dui:<span class="text-danger">*</span></label><br>
-                                    <input type="text" class="form-control" placeholder="Apellido" id="apellido" name="dui">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="carrera">Rol<span class="text-danger">*</span></label><br>
-                                    <select name="carrera" id="carrera" class="form-control">
-                                        <option value="" disabled selected>Seleccione un rol</option>
-                                        <option value="Jefedecampo">Jefe de Campo</option>
-                                        <option value="Encuestador">Encuestador</option>
-                                        <option value="UnidaddeCC">Unidad de CC</option>
-                                        <option value="Coordinador">Coordinador</option>
-                                    </select>
-                                </div>
+                            <div class="form-group">
+                                <label for="permiso_id" class="col-form-label">Permiso: <span
+                                        class="text-danger">*</span></label><br>
+                                <select class="form-control col-sm-12 selectBuscar" id="permiso_id" name="permiso_id"
+                                    data-placeholder="Seleccione un permiso">
+                                    <option></option>
+                                    <option value="{{ permiso.idPermiso }}">{{ permiso.nombre }}</option>
+                                </select>
                             </div>
                     </div>
-                    </form>
-                    <div class="card-footer text-muted">
-                        <div class="float-right">
-                            <a th:href="@{/usuario/administrar}" type="button" class="btn btn-outline-dark">
-                        Cancelar</a>
-                    <button type="submit" class="btn btn-dark">Guardar</button>
-                        </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-dark float-right" id="btnAccionUsuario">Guardar</button>
+                        <a href="#" class="btn btn-outline-dark float-right btnLimpiar"
+                            onClick="btnLimpiarUsuario()">Limpiar</a>                       
                     </div>
+                </form>  
                 </div>
             </div>
         </div>
-    </div>
-   <!-- Scripts generales -->
-    <div th:replace="base/general :: scripts"></div>         
+        <!-- Scripts generales -->
+        <div th:replace="base/general :: scripts"></div>
 </body>
+
 </html>

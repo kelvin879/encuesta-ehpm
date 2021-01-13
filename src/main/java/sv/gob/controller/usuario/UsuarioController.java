@@ -8,15 +8,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import sv.gob.models.Usuarios;
-import sv.gob.service.administrador.IUsuarioService;
+import sv.gob.models.usuario.Usuario;
+import sv.gob.service.usuario.IUsuarioService;
 
 @Controller
 @RequestMapping("/usuario")
 public class UsuarioController {
 	
 	@Autowired
-	private IUsuarioService usuario;
+	private IUsuarioService serviceUsuario;
+
+	@GetMapping("/administrar")
+	private String MostrarUsuario(Usuario usuario, Model model)
+	{
+		List<Usuario> lista = serviceUsuario.buscarTodas();
+		model.addAttribute("usuarios", lista);		
+		return "usuario/Administrar";
+	}
 	
 	@GetMapping("/crear")
 	private String CrearUsuario(Model model)
@@ -30,12 +38,4 @@ public class UsuarioController {
 		return "usuario/Editar";
 	}
 	
-	@GetMapping("/administrar")
-	private String MostrarUsuario(Model model)
-	{
-		List<Usuarios> listaMostrarUsuario = usuario.mostrar();
-		model.addAttribute("mostrarUsuario",listaMostrarUsuario);
-		return "usuario/Administrar";
-	}
-
 }

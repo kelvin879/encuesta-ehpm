@@ -39,7 +39,7 @@
                     <div class="card-header">
                         <h5>Preguntas</h5>
                     </div>
-                    <div class="card-body">
+                    <div id="divPrueba" class="card-body">
                         <div class="row-mb-2">
                             <div class="col-md-12-mb-2">
                                 <label for="pregunta"> 1. Pregunta de selección múltiple: </label>
@@ -159,6 +159,8 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal pregunta de texto corto -->
     
     <div class="modal fade" id="textoCorto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -193,6 +195,8 @@
         </div>
     </div>
 
+    <!-- Modal pregunta de selección -->
+
     <div class="modal fade" id="seleccion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable" role="document">
             <div class="modal-content">
@@ -203,24 +207,25 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id="formModalSelect">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Título de la pregunta:</label>
                             <input type="text" class="form-control" id="recipient-name" placeholder="Escribe tu pregunta">
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Descripción extra:</label>
-                            <input type="text" class="form-control" id="recipient-name" placeholder="Añadir indicaciones">
+                            <textarea class="form-control" id="recipient-name" name="w3review" rows="1" cols="50" placeholder="Añadir indicaciones"></textarea>                             
                         </div>
-                        <div class="form-group">
-                            <label for="message-text" class="col-form-label">Respuestas:</label>
-                            <input type="text" class="form-control" id="recipient-name" placeholder="Respuesta 1">
-                            <br>
-                            <input type="text" class="form-control" id="recipient-name" placeholder="Respuesta 2">
-                            <br>
-                            <button class="btn btn-outline-dark btn-block btn-modal" type="button" data-toggle="modal" data-target="#seleccion" data-whatever="@mdo"> <i class="fas fa-plus"></i> Añadir respuesta</button>
-                        </div>
+                        <label for="message-text" class="col-form-label">Respuestas:</label>   
+                        <div id="divModal" class="form-group">                            
+                                <a id="btnClose" type="button" class="close float-right" th:attr="onclick=|eliminarElemento('input-res','btnClose' )|">&times;</a>
+                                <input type="text" class="form-control" id="input-res" placeholder="Respuesta">                                                                                                                                                                                              
+                                <a id="btnClose" type="button" class="close float-right" th:attr="onclick=|eliminarElemento('input-res','btnClose' )|">&times;</a>
+                                <input type="text" class="form-control" id="input-res" placeholder="Respuesta">                                                                                           
+                                                                                                    
+                        </div>                        
                     </form>
+                    <button class="btn btn-outline-dark btn-block" id="btnModalSelect"> <i class="fas fa-plus"></i> Añadir respuesta</button>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
@@ -232,6 +237,7 @@
     
    <!-- Scripts generales -->
   <div th:replace="base/general :: scripts"></div>
+  <script th:src="@{/js/cuestionario/preguntas.js}" type="text/javascript"></script>  
 </body>
 
 </html>

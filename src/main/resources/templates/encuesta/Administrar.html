@@ -56,36 +56,46 @@
 					<div class="card-header">
 						<h5>Información de Encuesta</h5>
 						<small class="text-danger">* Obligatorio</small>
-					</div>		  
-
+					</div>		 
 					<div class="card-body">
-						<form  method="post"> 	   			   			 
+					<!-- Mensajes -->
+						<div class="alert alert-success alert-dismissable" th:if="${success !=null}">
+							<label th:text="${success}"></label>
+							<button type="button" class="close" data-dismiss="alert">&times;</button>
+						</div>
+						<form id="formEncuesta" th:action="@{/encuesta/save}" th:object="${encuesta}" method="post"> 	
 							<div class="form-row">
 								<div class="form-group col-md-6" >
 									<label for="codigo">Código: <span class="text-danger">*</span></label>
-									<input type="hidden">											    
-											<input type="text" class="form-control"  placeholder="Código" required="required">
+									<input type="hidden" th:field="*{id}" >	
+									<input type="hidden" th:field="*{fecha}" >											    
+									<input type="text" class="form-control" id="codigo" name="codigo" placeholder="Código" th:field="*{codigo}">
+									<small class="form-text text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></small>
 								</div>
 								<div class="form-group col-md-6" >
 									<label for="nombre">Nombre: <span class="text-danger">*</span></label>
 									<input type="hidden">											    
-											<input type="text" class="form-control"  placeholder="Nombre" required="required">
+										<input type="text" class="form-control" id="nombre" name="nombre"  placeholder="Nombre" th:field="*{nombre}">
+										<small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
 								</div>
-							<div class="form-group col-md-12">
-									<label for="descripcion">Descripción: <span class="text-danger">*</span></label>					    
-											<input type="text" class="form-control"  placeholder="Descripción" required="required">
 							</div>
+							<div class="form-row">
+								<div class="form-group col-md-12">
+									<label for="descripcion">Descripción: <span class="text-danger">*</span></label>					    
+									<input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripción" th:field="*{descripcion}">
+									<small class="form-text text-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></small>
+								</div>
 							<div class="form-group col-md-6">
 			                  <label>Estado: <span class="text-danger">*</span></label>
 			                  <input type="hidden">
 			                  <div class="form-group">
 			                    <div class="form-check form-check-inline">
-			                      <input class="form-check-input" type="radio" name="estado" id="#" value="#">
-			                      <label class="form-check-label" for="#">Habilitada</label>
+			                      <input class="form-check-input" type="radio" name="estado" id="estado" value="Habilitado" th:field="*{estado}">
+			                      <label class="form-check-label" for="#">Habilitado</label>
 			                    </div>
 			                    <div class="form-check form-check-inline">
-			                      <input class="form-check-input" type="radio" name="estado" id="#" value="#">
-			                      <label class="form-check-label" for="#">Deshabilitada</label>
+			                      <input class="form-check-input" type="radio" name="estado" id="estado" value="Deshabilitado" th:field="*{estado}">
+			                      <label class="form-check-label" for="#">Deshabilitado</label>
 			                    </div>
 			                  </div>
 			                </div>				 					                  			  
@@ -104,7 +114,7 @@
 								<button class="btn btn-dark" type="submit">Guardar</button>
 								</div>
 						</div>   
-							</form>   	
+					</form>   	
 					</div>
 					</div>   		   	
 			</div>	  	
@@ -127,25 +137,26 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>001</td>
-									<td>EHPM-2020</td>
-									<td>Encuesta para la DIGESTYC 2020</td>
-									<td>10/10/2020</td>
-									<td>Habilitada</td>
+								<tr th:each="encuesta : ${encuestas}">
+									<td th:text="${encuesta.codigo}"></td>
+									<td th:text="${encuesta.nombre}"></td>
+									<td th:text="${encuesta.descripcion}"></td>
+									<td th:text="${encuesta.fecha}"></td>
+									<td th:text="${encuesta.estado}"></td>
 									<td>
 										<a
+										   th:href="@{/encuesta/editar/{id} (id=${encuesta.id})}"
 											class="btn btn-outline-dark"
 											data-toggle="tooltip"
 											data-placement="bottom"
 											title="Editar encuesta"
 										><i class="fas fa-edit"></i></a>
-										<a
-											class="btn btn-outline-dark"
-											data-toggle="tooltip"
-											data-placement="bottom"
-											title="Eliminar encuesta"
-										><i class="fas fa-trash-alt"></i></a>										
+										
+										<button class="btn btn-outline-dark" id="btnEliminar" 
+										th:href="@{/encuesta/eliminar/}+${encuesta.id}"
+                                        th:attr="onclick=|eliminarEncuesta('${encuesta.id}' )|" 
+                                        data-toggle="tooltip" data-placement="bottom" 
+                                        title="Eliminar encuestas"> <i class="fas fa-trash-alt"></i></button>										
 									</td> 			 							
 								</tr>
 							</tbody>	 				
@@ -161,5 +172,7 @@
 	
 	<!-- Scripts generales -->
   <div th:replace="base/general :: scripts"></div>
+    
+     <script th:src="@{/js/encuesta/encuesta.js}" type="text/javascript"></script> 
 </body>
 </html>

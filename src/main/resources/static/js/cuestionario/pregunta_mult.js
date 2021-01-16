@@ -1,4 +1,4 @@
-$("#btnModalSelect").addEventListener("click",function(){
+$("#btnModalMultiple").addEventListener("click",function(){
     var id = "input-" + Math.floor(Math.random() * 999999);
     var input = document.createElement("input");
     //var input = document.getElementById("respuesta");
@@ -10,33 +10,33 @@ $("#btnModalSelect").addEventListener("click",function(){
     input.setAttribute("placeholder","Respuesta");
     input.setAttribute("name","respuesta")
     input.id =id;
-    crearBtnEliminarS(id);    
-    $("#divModal").appendChild(input);
+    crearBtnEliminar(id);    
+    $("#div_multiple").appendChild(input);
 })
 
 function $(selector){
     return document.querySelector(selector);
 }
 
-function crearBtnEliminarS(idEl){
+function crearBtnEliminar(idEl){
     var id = "btn-" + Math.floor(Math.random() * 999999);
 
     var btn = document.createElement('a');
     btn.setAttribute("type","button");
     btn.setAttribute("class","close float-right");
     btn.id=id;
-    btn.setAttribute('onclick','eliminarElementoS("'+idEl+'" ,"'+id+'" )');
+    btn.setAttribute('onclick','eliminarMultiple("'+idEl+'" ,"'+id+'" )');
     //crear_enlace.setAttribute('th:attr','onclick=|eliminarElemento("'+idEl+'" )|');
     btn.innerHTML = "&times";
-    $("#divModal").appendChild(btn);
+    $("#div_multiple").appendChild(btn);
 
 }
 
-function eliminarElementoS(id_elemento, idBtn){
+function eliminarMultiple(id_elemento, idBtn){
     elementoEliminar = document.getElementById(id_elemento);
     link_eliminar = document.getElementById(idBtn);
     if (elementoEliminar){
-        elementoPadre = document.getElementById("divModal");
+        elementoPadre = document.getElementById("div_multiple");
         elementoPadre.removeChild(elementoEliminar);
 
         elementoPadreLink = link_eliminar.parentNode;

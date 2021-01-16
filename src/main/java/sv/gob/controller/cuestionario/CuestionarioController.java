@@ -14,7 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import sv.gob.models.cuestionario.Pregunta;
+import sv.gob.models.cuestionario.Respuesta;
 import sv.gob.models.cuestionario.Seccion;
+import sv.gob.service.cuestionario.IPreguntaService;
+import sv.gob.service.cuestionario.IRespuestaService;
 import sv.gob.service.cuestionario.ISeccionService;
 
 
@@ -23,7 +27,11 @@ import sv.gob.service.cuestionario.ISeccionService;
 public class CuestionarioController {
 	
 	@Autowired
-   	private ISeccionService serviceSeccion;
+	private ISeccionService serviceSeccion;
+	@Autowired
+	   private IPreguntaService servicePregunta;
+	   @Autowired
+   	private IRespuestaService serviceRespuesta;
 
 	@GetMapping("/disenyo")
 	private String crearSeccion(Seccion seccion, Model model)
@@ -33,9 +41,17 @@ public class CuestionarioController {
 		return "cuestionario/CrearSeccion";
 	}
 
-	@GetMapping("/preguntas")
-	private String crearCuestionario()
+	@GetMapping("/preguntas/{id}")
+	private String crearCuestionario(@PathVariable("id") String idSeccion, Model model)
 	{
+		List<Pregunta> preguntasList = servicePregunta.buscarSecciones(idSeccion);
+		model.addAttribute("preguntas", preguntasList);
+		model.addAttribute("id_seccion", idSeccion);
+		for(Pregunta preg : preguntasList)
+		{
+			System.out.println(preg); 	
+		}
+
 		return "cuestionario/PreguntasSeccion";
 	}
 	
@@ -49,6 +65,7 @@ public class CuestionarioController {
 		}	
 				
 		// Guadamos el objeto categoria en la bd
+		System.out.println(seccion); 
 		serviceSeccion.guardar(seccion);
 		attributes.addFlashAttribute("success", "Registro guardado con éxito");
 			

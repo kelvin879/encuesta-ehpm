@@ -152,7 +152,7 @@
 										><i class="fas fa-trash-alt"></i></a>-->
 										<button class="btn btn-outline-dark" id="btnEliminar" th:attr="onclick=|eliminarSeccion('${seccion.id}' )|" data-toggle="tooltip" data-placement="bottom" title="Eliminar sección"> <i class="fas fa-trash-alt"></i></button>
 										<a
-											th:href="@{/cuestionario/preguntas}"
+											th:href="@{/cuestionario/preguntas/{id} (id=${seccion.id})}"
 											class="btn btn-outline-dark"
 											data-toggle="tooltip"
 											data-placement="bottom"

@@ -1,13 +1,13 @@
 package sv.gob.controller.cuestionario;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,7 +19,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import sv.gob.models.cuestionario.Pregunta;
 import sv.gob.models.cuestionario.Respuesta;
-import sv.gob.models.cuestionario.Seccion;
 import sv.gob.service.cuestionario.IPreguntaService;
 import sv.gob.service.cuestionario.IRespuestaService;
 
@@ -33,12 +32,32 @@ public class PreguntaController {
 	  private IPreguntaService servicePregunta;
 	 @Autowired
 	  private IRespuestaService serviceRespuesta;
-	   
+
+ 	private String idSeccion;
+
+	/* Mostrar preguntas */
+	@GetMapping("/preguntas")
+	private String crearCuestionario(Pregunta pregunta, Model model, Pageable page) {
+		Page<Pregunta> preguntasList = servicePregunta.buscarSecciones(page, idSeccion);
+		model.addAttribute("preguntas", preguntasList);
+		System.out.println(idSeccion); 
+		model.addAttribute("id_seccion", idSeccion);
+		for (Pregunta preg : preguntasList) {
+			System.out.println(preg);
+		}
+			return "cuestionario/PreguntasSeccion";
+	}
+
+	@GetMapping("/{seccion}")
+	private String seccion(@PathVariable ("seccion") String seccion, Model model, Pageable page)
+	{
+		idSeccion = seccion;	
+		return "redirect:/pregunta/preguntas";
+	}
 	
-	@PostMapping("/seleccion/{id}")
-	private String guardarSeleccion(@PathVariable("id") String idSeccion,@Valid Seccion seccion,
-	String respuesta[], String titulo, String descripcion,
-	BindingResult result, Model model, RedirectAttributes attributes) {
+	@PostMapping("/seleccion/save")
+	private String guardarSeleccion(@Valid Pregunta pregunta,
+	String respuesta[], BindingResult result, Model model, RedirectAttributes attributes) {
 		List<Respuesta> respuestas =new ArrayList<Respuesta>();
 		//Set<Respuesta>respuestas= new HashSet<Respuesta>();
 		
@@ -61,9 +80,9 @@ public class PreguntaController {
 		}	
 				
 		// Guadamos el objeto categoria en la bd
-		Pregunta pregunta = new Pregunta();
-		pregunta.setTitulo(titulo);
-		pregunta.setDescripcion(descripcion);
+		//Pregunta pregunta = new Pregunta();
+		//pregunta.setTitulo(titulo);
+		//pregunta.setDescripcion(descripcion);
 		pregunta.setRespuesta(respuestas);	
 		pregunta.setSeccion(idSeccion);	
 		pregunta.setTipo("seleccion");	
@@ -72,13 +91,12 @@ public class PreguntaController {
 		attributes.addFlashAttribute("success", "Registro guardado con éxito");
 			
 		//return "redirect:/categorias/index";
-		return "redirect:/cuestionario/preguntas/{id}";	
+		return "redirect:/pregunta/preguntas";	
 	}
 	
-	@PostMapping("/multiple/{id}")
-	private String guardarMultiple(@PathVariable("id") String idSeccion,@Valid Seccion seccion,
-		 String respuesta[], String titulo, String descripcion,
-		 BindingResult result, Model model, RedirectAttributes attributes) {
+	@PostMapping("/multiple/save")
+	private String guardarMultiple(@Valid Pregunta pregunta,
+	String respuesta[], BindingResult result, Model model, RedirectAttributes attributes) {
 		List<Respuesta> respuestas =new ArrayList<Respuesta>();
 		//Set<Respuesta>respuestas= new HashSet<Respuesta>();
 		
@@ -97,13 +115,13 @@ public class PreguntaController {
 			Respuesta respuest= new Respuesta();
 			respuest.setRespuesta(respu);		
 			serviceRespuesta.guardar(respuest);	
-			respuestas.add(respuest);						
+			respuestas.add(respuest);
 		}	
 				
 		// Guadamos el objeto categoria en la bd
-		Pregunta pregunta = new Pregunta();
-		pregunta.setTitulo(titulo);
-		pregunta.setDescripcion(descripcion);
+		//Pregunta pregunta = new Pregunta();
+		//pregunta.setTitulo(titulo);
+		//pregunta.setDescripcion(descripcion);
 		pregunta.setRespuesta(respuestas);	
 		pregunta.setSeccion(idSeccion);	
 		pregunta.setTipo("multiple");	
@@ -112,16 +130,17 @@ public class PreguntaController {
 		attributes.addFlashAttribute("success", "Registro guardado con éxito");
 			
 		//return "redirect:/categorias/index";
-		return "redirect:/cuestionario/preguntas/"+idSeccion;	
+		return "redirect:/pregunta/preguntas";	
 	}
 
 
-	@PostMapping("/texto/{id}")
-	private String guardarTexto(@PathVariable("id") String idSeccion,@Valid Seccion seccion,
-		 String respuesta[], String titulo, String descripcion,
+	@PostMapping("/texto/save")
+	private String guardarTexto(@Valid Pregunta pregunta,
+		 String respuesta,
 		 BindingResult result, Model model, RedirectAttributes attributes){
 		
 		//Set<Respuesta>respuestas= new HashSet<Respuesta>();
+		List<Respuesta> respuestas =new ArrayList<Respuesta>();
 		
 		if (result.hasErrors()){
 			List<Pregunta> lista = servicePregunta.buscarTodas();
@@ -129,19 +148,24 @@ public class PreguntaController {
 			System.out.println("Existieron errores en el formulario"); 
 			return "cuestionario/Crearpregunta";
 		}	
-				
+
+		Respuesta respu= new Respuesta();
+		respu.setRespuesta("");
+		serviceRespuesta.guardar(respu);	
+		respuestas.add(respu);
 		// Guadamos el objeto categoria en la bd	
-		Pregunta pregunta = new Pregunta();
-		pregunta.setTitulo(titulo);
-		pregunta.setDescripcion(descripcion);		
+		//Pregunta pregunta = new Pregunta();
+		//pregunta.setTitulo(titulo);
+		//pregunta.setDescripcion(descripcion);		
 		pregunta.setSeccion(idSeccion);	
-		pregunta.setTipo("texto");	
+		pregunta.setTipo("texto");
+		pregunta.setRespuesta(respuestas);	
 		System.out.println(pregunta); 
 		servicePregunta.guardar(pregunta);
 		attributes.addFlashAttribute("success", "Registro guardado con éxito");
 			
 		//return "redirect:/categorias/index";
-		return "redirect:/cuestionario/preguntas/{id}";	
+		return "redirect:/pregunta/preguntas";	
 	}
 
 	@GetMapping("/editar/{id}")
@@ -157,11 +181,22 @@ public class PreguntaController {
 	@GetMapping("/eliminar/{id}")
 	private String eliminar(@PathVariable("id") String idPregunta, RedirectAttributes attributes)
 	{
+		List <Respuesta> respuestas;
 		//Eliminamos el Pregunta
+		Pregunta pregunta= servicePregunta.editar(idPregunta);
+		respuestas = pregunta.getRespuesta();
+		if(respuestas != null)
+		{
+			for(Respuesta res : respuestas)
+			{
+				serviceRespuesta.eliminar(res.getId());
+			}
+
+		}
 		servicePregunta.eliminar(idPregunta);
 		
 		attributes.addFlashAttribute("success", "Registro eliminado exitosamente");
-		return "redirect:/cuestionario/disenyo";
+		return "redirect:/pregunta/preguntas";
 	}
 	
 }

@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import sv.gob.models.usuario.Usuario;
+import sv.gob.models.usuario.Users;
 import sv.gob.service.usuario.IUsuarioService;
 
 @Controller
@@ -19,9 +19,9 @@ public class UsuarioController {
 	private IUsuarioService serviceUsuario;
 
 	@GetMapping("/administrar")
-	private String MostrarUsuario(Usuario usuario, Model model)
+	private String MostrarUsuario(Users usuario, Model model)
 	{
-		List<Usuario> lista = serviceUsuario.buscarTodas();
+		List<Users> lista = serviceUsuario.buscarTodas();
 		model.addAttribute("usuarios", lista);		
 		return "usuario/Administrar";
 	}

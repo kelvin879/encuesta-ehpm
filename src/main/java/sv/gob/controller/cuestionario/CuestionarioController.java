@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,11 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import sv.gob.models.cuestionario.Pregunta;
-import sv.gob.models.cuestionario.Respuesta;
 import sv.gob.models.cuestionario.Seccion;
-import sv.gob.service.cuestionario.IPreguntaService;
-import sv.gob.service.cuestionario.IRespuestaService;
 import sv.gob.service.cuestionario.ISeccionService;
 
 
@@ -28,32 +25,27 @@ public class CuestionarioController {
 	
 	@Autowired
 	private ISeccionService serviceSeccion;
-	@Autowired
-	   private IPreguntaService servicePregunta;
-	   @Autowired
-   	private IRespuestaService serviceRespuesta;
+	private static String idEncuesta;
+
+	/* Funcionamiento de secciones */
 
 	@GetMapping("/disenyo")
-	private String crearSeccion(Seccion seccion, Model model)
+	private String crearSeccion(Seccion seccion, Model model, Pageable page)
 	{
-		List<Seccion> lista = serviceSeccion.buscarTodas();
-		model.addAttribute("secciones", lista);
+		List<Seccion> lista = serviceSeccion.buscarSecciones(idEncuesta);
+		model.addAttribute("secciones", lista);	
+		System.out.println(idEncuesta); 
+		model.addAttribute("encuesta", idEncuesta);		
 		return "cuestionario/CrearSeccion";
 	}
 
-	@GetMapping("/preguntas/{id}")
-	private String crearCuestionario(@PathVariable("id") String idSeccion, Model model)
+	@GetMapping("/seccion/{encuesta}")
+	private String seccion(@PathVariable ("encuesta") String encuesta, Model model, Pageable page)
 	{
-		List<Pregunta> preguntasList = servicePregunta.buscarSecciones(idSeccion);
-		model.addAttribute("preguntas", preguntasList);
-		model.addAttribute("id_seccion", idSeccion);
-		for(Pregunta preg : preguntasList)
-		{
-			System.out.println(preg); 	
-		}
-
-		return "cuestionario/PreguntasSeccion";
+		idEncuesta = encuesta;	
+		return "redirect:/cuestionario/disenyo";
 	}
+
 	
 	@PostMapping("/save")
 	private String guardar(@Valid Seccion seccion, BindingResult result, Model model, RedirectAttributes attributes) {
@@ -61,11 +53,13 @@ public class CuestionarioController {
 			List<Seccion> lista = serviceSeccion.buscarTodas();
 			model.addAttribute("secciones", lista);
 			System.out.println("Existieron errores en el formulario"); 
-			return "cuestionario/CrearSeccion";
+			return "cuestionario/CrearSeccion/";
 		}	
 				
 		// Guadamos el objeto categoria en la bd
 		System.out.println(seccion); 
+		seccion.setEncuesta(idEncuesta);
+		System.out.println(idEncuesta); 
 		serviceSeccion.guardar(seccion);
 		attributes.addFlashAttribute("success", "Registro guardado con éxito");
 			
@@ -93,4 +87,5 @@ public class CuestionarioController {
 		return "redirect:/cuestionario/disenyo";
 	}
 	
+
 }

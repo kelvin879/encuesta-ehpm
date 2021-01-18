@@ -16,15 +16,21 @@
     </div>
     <!-- Contenido_de_la_página -->
     <div class="container">
- <!-- Ruta del contendio -->
-    <ol th:replace="base/general :: ruta_contenido(
-      ruta=~{ :: .ruta},ruta2=~{ :: .ruta2})">
-        <!-- Ruta de la página -->  
-        <div class="ruta">
-            <a th:href="@{/cuestionario/disenyo}">Secciones</a>          
-        </div>            
-    	<div class="ruta2">Preguntas</div>
-    </ol> 
+   <!-- Ruta del contendio -->
+     <ol class="breadcrumb">
+         <li class="breadcrumb-item">
+           <a th:href="@{/}">Inicio</a>
+        </li>
+        <li class="breadcrumb-item active">
+			<a th:href="@{/encuesta/administrar}">Encuesta</a>
+		</li>
+		 <li class="breadcrumb-item active">
+			<a th:href="@{/cuestionario/disenyo}">Secciones</a>
+		</li>
+        <li class="breadcrumb-item active">
+			<a >Preguntas</a>
+		</li>
+     </ol>
         <!-- Título de la pantalla -->
         <div th:replace="base/general :: titulo_pantalla(titulo=~{ :: .titulo}, btnPrincipal=~{ :: .btnPrincipal}, subTit=~{ :: .subTit})">
             <h2 class="titulo">Preguntas de la Sección</h2>
@@ -40,18 +46,13 @@
                         <h5>Preguntas</h5>
                     </div>
 
-                    <div id="cardPregunta" class="card-body" th:each="pregunta : ${preguntas}"th:switch="${pregunta.tipo}">
-                        <div class="row-mb-2 " th:case="'seleccion'">
+                    <div id="cardPregunta" class="card-body"th:each="pregunta : ${preguntas}"th:switch="${pregunta.tipo}">
+                        <div id="pregunta_seleccion" class="row-mb-2 " th:case="'seleccion'">
+                             <hr>
                             <div class="row-mb-2" >
                                <!-- <div class="form-group col-md-8" >-->
-                                    <div class="dropdown float-right">
-                                        <button class="btn float-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#">Editar</a>
-                                            <a class="dropdown-item" href="#">Eliminar</a>                                            
-                                        </div>
+                                    <div class=" float-right">
+                                        <a  id="btnEliminar"  type="button" class="close float-right" th:attr="onclick=|eliminarPregunta('${pregunta.id}' )| ">&times;</a>    
                                     </div>  
                                     <label class="d-block mb-0"for="pregunta" th:text="${pregunta.titulo}"></label>            
                                     <small class="text-primary" for="descripcion" th:text="${pregunta.descripcion}"></small>
@@ -60,26 +61,21 @@
                                <!-- </div> -->
                             </div>
                             <div class="row-mb-2"  >
-                                <div class="form-group col-md-12 mt-3"  th:each="respuesta: ${pregunta.respuesta}">
+                                <div class="form-group col-md-12 mt-3" th:each="respuesta: ${pregunta.respuesta}" >
                                     <div class="radio" >
                                         <input type="radio" th:attr="name = ${pregunta.id}"   disabled>
                                         <label class="form-check-label" th:text="${respuesta.respuesta}" > </label>
                                     </div>                                     
                                 </div>                      
-                            </div>
-                        </div>
+                            </div>                           
+                        </div>                        
 
                         <div class="row-mb-2" th:case="'multiple'">
+                        <hr>
                            <div class="row-mb-2" >
                                <!-- <div class="form-group col-md-8" >-->
-                                    <div class="dropdown float-right">
-                                        <button class="btn float-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#">Editar</a>
-                                            <a class="dropdown-item" href="#">Eliminar</a>                                            
-                                        </div>
+                                    <div class=" float-right">
+                                        <a  id="btnEliminar"  type="button" class=" close float-right" th:attr="onclick=|eliminarPregunta('${pregunta.id}' )| ">&times;</a>    
                                     </div>  
                                     <label class="d-block mb-0"for="pregunta" th:text="${pregunta.titulo}"></label>            
                                     <small class="text-primary" for="descripcion" th:text="${pregunta.descripcion}"></small>
@@ -94,20 +90,15 @@
                                         <label class="form-check-label"  th:text="${respuesta.respuesta}"></label>
                                     </div>                                             
                                 </div>                      
-                            </div>
+                            </div>                            
                         </div>
              
                         <div class="row-mb-2" th:case="'texto'">
+                        <hr>
                            <div class="row-mb-2" >
                                <!-- <div class="form-group col-md-8" >-->
-                                    <div class="dropdown float-right">
-                                        <button class="btn float-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#">Editar</a>
-                                            <a class="dropdown-item" href="#">Eliminar</a>                                            
-                                        </div>
+                                   <div class=" float-right">
+                                        <a  id="btnEliminar"  type="button" class=" close float-right" th:attr="onclick=|eliminarPregunta('${pregunta.id}' )| ">&times;</a>    
                                     </div>  
                                     <label class="d-block mb-0"for="pregunta" th:text="${pregunta.titulo}"></label>            
                                     <small class="text-primary" for="descripcion" th:text="${pregunta.descripcion}"></small>
@@ -123,6 +114,15 @@
                         </div>
 
                   </div>
+                  
+                  <div class="card-footer ">
+                    <nav th:if="${preguntas.totalPages > 0}" aria-label="Page navigation example" class="float-right"  >
+                        <ul class="pagination">
+                            <li class="page-item"><a th:href="@{/pregunta/preguntas (page=${preguntas.number - 1})}" class="page-link">Anterior</a></li>
+                            <li class="page-item"><a th:href="@{/pregunta/preguntas(page=${preguntas.number + 1})}" class="page-link">Siguiente</a></li>
+                        </ul>
+                    </nav>
+                  </div>
                 </div>
             </div>
             <div class="col-md-3">
@@ -132,7 +132,7 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <button class="btn btn-outline-dark btn-block btn-modal" type="button" data-toggle="modal" data-target="#seleccion" data-whatever="@mdo"> <i class="fas fa-tasks"></i> Selección múltiple</button>
+                            <button class="btn btn-outline-dark btn-block btn-modal" type="button" data-toggle="modal" data-target="#seleccion" data-whatever="@mdo">  <i class="fas fa-list-ul"></i> Selección múltiple</button>
                             <button class="btn btn-outline-dark btn-block btn-modal" type="button" data-toggle="modal" data-target="#multiple" data-whatever="@mdo"> <i class="fas fa-tasks"></i> Múltiples respuestas</button>
                             <button class="btn btn-outline-dark btn-block btn-modal" type="button" data-toggle="modal" data-target="#textoCorto" data-whatever="@mdo"> <i class="fas fa-pencil-alt"></i> Texto Corto</button>
                         </div>
@@ -157,9 +157,10 @@
                     </button>
                 </div>
                <div class="modal-body">
-                    <form id="formModalPrg" th:action="@{/pregunta/texto/{id} (id=${id_seccion})}"  method="post">
+                    <form id="formModalPrg" th:action="@{/pregunta/texto/save}"  method="post">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Título de la pregunta:</label>
+                            
                             <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Escribe tu pregunta">
                         </div>
                         <div class="form-group">
@@ -192,9 +193,9 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="formModalSelect" th:action="@{/pregunta/seleccion/{id} (id=${id_seccion})}"  method="post">
+                    <form id="formModalSelect" th:action="@{/pregunta/seleccion/save}"  method="post">
                         <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Título de la pregunta:</label>
+                            <label for="recipient-name" class="col-form-label" th:field="*{titulo}">Título de la pregunta:</label>
                             <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Escribe tu pregunta">
                         </div>
                         <div class="form-group">
@@ -230,7 +231,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="formModalMult" th:action="@{/pregunta/multiple/{id} (id=${id_seccion})}"  method="post">
+                    <form id="formModalMult" th:action="@{/pregunta/multiple/save}"  method="post">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Título de la pregunta:</label>
                             <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Escribe tu pregunta">

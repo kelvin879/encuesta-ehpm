@@ -25,6 +25,16 @@
         </ul>
     </div>
     <div class="container">
+    <!-- Ruta del contendio -->
+     <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+           <a th:href="@{/}">Inicio</a>
+        </li>
+		    
+        	<li class="breadcrumb-item active">
+		    	<a >Jornadas</a>
+		    </li>
+     </ol>
         <!-- Título de la pantalla -->
         <div th:replace="base/general :: titulo_pantalla(
       titulo=~{ :: .titulo}, btnPrincipal=~{ :: .btnPrincipal}, subTit=~{ :: .subTit}
@@ -49,23 +59,20 @@
                         <table class="table table-striped text-center">
                             <thead>
                                 <tr>
-                                    <th scope="col">Inicio</th>
-                                    <th scope="col">Fin</th>
-                                    <th scope="col">Zona Geografica</th>
                                     <th scope="col">Grupo</th>
                                     <th scope="col">Cuestionario</th>
+                                    <th scope="col">Inicio</th>
+                                    <th scope="col">Fin</th>
                                     <th scope="col">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr th:each="jornada:${exito}">
-                                    <td th:text="${jornada.fechaI}"></td>
-                                    <td th:text="${jornada.fechaF}"></td>
-                                    <td>
-                                        <button type="submit" class=" btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Ubicacion"><i class="fas fa-map-marker-alt"></i></button>
-                                    </td>
+                                <tr th:each="jornada : ${exito}" > 
                                     <td th:text="${jornada.grupo}"></td>
                                     <td th:text="${jornada.getCantCuestionarios()}"></td>
+                                    <td th:text="${jornada.fechaI}"></td>
+                                    <td th:text="${jornada.fechaF}"></td>                                   
+                                    
                                     <!-- <td>
                                         <a 
                                             th:href="@{/jornada/cuestionarios/administrar}"

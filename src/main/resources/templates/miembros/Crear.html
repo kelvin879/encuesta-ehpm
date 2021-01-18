@@ -25,16 +25,18 @@
         </ul>
     </div>
     <div class="container">
-
- <!-- Ruta del contendio -->
-    <ol th:replace="base/general :: ruta_contenido(
-      ruta=~{ :: .ruta}, ruta2=~{ :: .ruta2})">
-        <!-- Ruta de la página -->              
-    	<div class="ruta">
-       <a th:href="@{/miembros/administrar}">Miembros</a>
-       </div>
-		<div class="ruta2">Crear</div>	
-    </ol>
+   <!-- Ruta del contendio -->
+     <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+           <a th:href="@{/}">Inicio</a>
+        </li>
+		    <li class="breadcrumb-item active">
+		    	<a th:href="@{/miembros/administrar}">Miembros</a>
+		    </li>
+        	<li class="breadcrumb-item active">
+		    	<a >Crear</a>
+		    </li>
+     </ol>
 
         <!-- Título de la pantalla -->
         <div th:replace="base/general :: titulo_pantalla(titulo=~{ :: .titulo}, btnPrincipal=~{ :: .btnPrincipal}, subTit=~{ :: .subTit})">

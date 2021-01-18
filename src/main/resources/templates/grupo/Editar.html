@@ -30,14 +30,19 @@
   <div class="container">
 
     <!-- Ruta del contendio -->
-    <ol th:replace="base/general :: ruta_contenido(
-      ruta=~{ :: .ruta}, ruta2=~{ :: .ruta2})">
-        <!-- Ruta de la página -->              
-    	<div class="ruta">
-       <a th:href="@{/grupo/administrar}">Grupos</a>
-       </div>
-		<div class="ruta2">Crear</div>	
-    </ol>
+     <!-- Ruta del contendio -->
+     <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+           <a th:href="@{/}">Inicio</a>
+        </li>
+        <li class="breadcrumb-item active">
+		    	<a th:href="@{/grupo/administrar}">Grupos</a>
+		    </li>
+		    <li class="breadcrumb-item active">
+		    	<a >Editar</a>
+		    </li>
+     </ol>
+
 
     <!-- Título de la pantalla -->
     <div th:replace="base/general :: titulo_pantalla(
@@ -85,27 +90,6 @@
                       name="nombre" value="" th:field="*{nombreGrupos}">
                 </div>
               </div>
-
-              <div class="form-row">
-                  
-                    
-                        <div class="form-group col-md-6">
-
-                          <label for="carrera">Zona de operación: <span class="text-danger">*</span></label><br>
-                          <select name="carrera" id="carrera" class="form-control" th:field="*{zonaDeOperacionGrupos}">
-
-                              <option value="" disabled selected>Seleccione una zona</option>
-                              <option value="Jefedecampo">Oriental</option>
-                              <option value="Encuestador">Occidental</option>
-                              <option value="UnidaddeCC">Central I</option>
-                              <option value="Coordinador">Central II</option>
-                              <option value="Coordinador">AMSS</option>
-
-                          </select>
-                      </div>
-
-                      </div>
-
           </div>
 
             <div class="card-footer text-muted">

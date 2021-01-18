@@ -25,6 +25,19 @@
     </ul>
   </div>
 <div class="container">
+
+   <!-- Ruta del contendio -->
+     <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+           <a th:href="@{/}">Inicio</a>
+        </li>
+		    <li class="breadcrumb-item active">
+		    	<a th:href="@{/jornada/administrar}">Jornadas</a>
+		    </li>
+        	<li class="breadcrumb-item active">
+		    	<a >Crear</a>
+		    </li>
+     </ol> 
 <!-- Título de la pantalla -->
 <div th:replace="base/general :: titulo_pantalla(titulo=~{ :: .titulo}, btnPrincipal=~{ :: .btnPrincipal}, subTit=~{ :: .subTit})">
   <h2 class="titulo">Registrar Jornada</h2>
@@ -43,7 +56,7 @@
           <div class="form-row">
             <!--Zona de operacion-->
             <div class="form-group col-md-6">
-              <label for="carrera">Zona de operación: <span class="text-danger">*</span></label><br>
+              <label for="carrera">Encuesta: <span class="text-danger">*</span></label><br>
               <select class="form-control">
                 <option th:each="lista3:${zona}">
                   <td th:text="${lista3.nombre}"></td>

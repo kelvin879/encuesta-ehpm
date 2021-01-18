@@ -16,6 +16,7 @@ public class Seccion {
 	private String nombreSeccion;
 	@Pattern(regexp = "^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ0-9 ]+$")
 	private String descripcionSeccion;
+	private String encuesta;
 	public String getId() {
 		return id;
 	}
@@ -40,11 +41,21 @@ public class Seccion {
 	public void setDescripcionSeccion(String descripcionSeccion) {
 		this.descripcionSeccion = descripcionSeccion;
 	}
+
+	public String getEncuesta() {
+		return encuesta;
+	}
+
+	public void setEncuesta(String encuesta) {
+		this.encuesta = encuesta;
+	}
+
 	@Override
 	public String toString() {
-		return "Seccion [id=" + id + ", codigoSeccion=" + codigoSeccion + ", nombreSeccion="
-				+ nombreSeccion + ", descripcionSeccion=" + descripcionSeccion + "]";
+		return "Seccion [codigoSeccion=" + codigoSeccion + ", descripcionSeccion=" + descripcionSeccion + ", encuesta="
+				+ encuesta + ", id=" + id + ", nombreSeccion=" + nombreSeccion + "]";
 	}
+	
 
 	
 	

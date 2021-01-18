@@ -14,8 +14,7 @@ public class Grupos {
 	private String codigoGrupos;
 	@Pattern(regexp = "^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ0-9 ]+$")
 	private String nombreGrupos;
-	@Pattern(regexp = "^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ0-9 ]+$")
-	private String zonaDeOperacionGrupos;
+	
 	public String getId() {
 		return id;
 	}
@@ -35,16 +34,11 @@ public class Grupos {
 		this.nombreGrupos = nombreGrupos;
 	}
 
-	public String getZonaDeOperacionGrupos() {
-		return zonaDeOperacionGrupos;
-	}
-	public void setZonaDeOperacionGrupos(String zonaDeOperacionGrupos) {
-		this.zonaDeOperacionGrupos = zonaDeOperacionGrupos;
-	}
+	
 	@Override
 	public String toString() {
 		return "Grupos [id=" + id + ", codigoGrupos=" + codigoGrupos + ", nombreGrupos=" + nombreGrupos
-				+ ", zonaDeOperacionGrupos=" + zonaDeOperacionGrupos + "]";
+				+  "]";
 	}
 	
 }

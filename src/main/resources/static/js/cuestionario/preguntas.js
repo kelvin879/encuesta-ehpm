@@ -1,10 +1,6 @@
 $("#btnModalSelect").addEventListener("click",function(){
     var id = "input-" + Math.floor(Math.random() * 999999);
     var input = document.createElement("input");
-    //var input = document.getElementById("respuesta");
-    //var clon = input.cloneNode(true);
-    //clon.id =id;
-    //document.getElementById("divModal").appendChild(clon);
     input.setAttribute("type","text");
     input.setAttribute("class","form-control");
     input.setAttribute("placeholder","Respuesta");
@@ -46,18 +42,32 @@ function eliminarElementoS(id_elemento, idBtn){
     }
 }
 
-/*function crearLinkEliminar(div_append, id_elemento){
-    id_link = "id_link_"+div_append;			
-    var crear_enlace = document.createElement('a');
-    crear_enlace.setAttribute('id',id_link);
-    //crear_enlace.setAttribute('href','javascript:eliminarElemento("'+id_elemento+'","'+id_link+'");');
-    texto_enlace = document.createTextNode('Eliminar');
-    crear_enlace.appendChild(texto_enlace);
-    document.getElementById(div_append).appendChild(crear_enlace);
+function eliminarPregunta(idPregunta){
+    Swal.fire({
+        title: '¿Seguro de eliminar la pregunta?',
+        icon: "warning",
+        text: "Los datos relacionados con la pregunta se eliminarán",
+        type: 'info',
+        showCancelButton: true,
+        confirmButtonText: 'Aceptar',
+        cancelButtonText: 'Cancelar'
+        }).then((result) => {
+        if (result.value) {
+            location.href = '/pregunta/eliminar/' + idPregunta;
+        }
+    });
 }
-    var c = document.getElementById("about");
-    var clon = c.cloneNode("about");
-    clon.style.width = "50px";
-    clon.style.height = "50px";
-    document.body.appendChild(clon);*/
+
+function editarPregunta(idPregunta, titulo, descripcion){
+   // location.href = '/cuestionario/editar/' + idPregunta
+   var modalPregunta = document.getElementById("btn_editar_seleccion");   
+    //$("#formModalSelect").attr('action',  '/cuestionario/editar/' + idPregunta);
+    $("#titulo").val(titulo);
+    $("#descripcion").val(descripcion);
+    modalPregunta.setAttribute("data-target","seleccion")
+    $('.selectpicker').selectpicker('refresh')   
+ 
+}
+
+
 

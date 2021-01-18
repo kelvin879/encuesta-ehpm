@@ -47,4 +47,10 @@ public class EncuestaService implements IEncuestaService {
 		
 	}
 
+	@Override
+	public List<Encuesta> buscarEstado(String estado) {
+		// TODO Auto-generated method stub
+		return (List<Encuesta>) encuestaRepo.findByEstado(estado);
+	}
+
 }

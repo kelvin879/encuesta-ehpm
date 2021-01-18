@@ -1,8 +1,3 @@
-/*$(document).ready(function(){
-    $("#formSeccion").attr('action', '/cuestionario/save');
-    $('.selectpicker').selectpicker('refresh')
-});*/
-
 
 /*function editarSeccion(idSeccion, codigo, nombre, descripcion){
     location.href = '/cuestionario/editar/' + idSeccion
@@ -16,7 +11,6 @@
         scrollTop: $("#cardDetalleSeccion").offset().top
     }, 100);
 }*/
-
 function eliminarSeccion(idSeccion){
     Swal.fire({
         title: '¿Seguro de eliminar la Seccion?',

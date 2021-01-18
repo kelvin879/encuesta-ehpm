@@ -29,12 +29,17 @@
   <div class="container">
 
     <!-- Ruta del contendio -->
-    <ol th:replace="base/general :: ruta_contenido(
-      ruta=~{ :: .ruta}, ruta2=~{ :: .ruta2})">
-        <!-- Ruta de la página -->              
-    	<div class="ruta">Secciones</div>
-		<div class="ruta2"></div>	
-    </ol>
+     <ol class="breadcrumb">
+         <li class="breadcrumb-item">
+           <a th:href="@{/}">Inicio</a>
+        </li>
+        <li class="breadcrumb-item active">
+			<a th:href="@{/encuesta/administrar}">Encuesta</a>
+		</li>
+		 <li class="breadcrumb-item active">
+			<a >Secciones</a>
+		</li>
+     </ol>
 	
     <!-- Título de la pantalla -->
     <div th:replace="base/general :: titulo_pantalla(
@@ -65,20 +70,20 @@
 								<div class="form-group col-md-6" >
 									<label for="codigo">Código: <span class="text-danger">*</span></label>
 									<input type="hidden" th:field="*{id}">											    
-									<input type="text" class="form-control" id="codigo" name="codigo" placeholder="Código" th:field="*{codigoSeccion}">
+									<input type="text" class="form-control" id="codigo" name="codigo" placeholder="Código" th:field="*{codigoSeccion}" autocomplete="off">
 									<small class="form-text text-danger" th:if="${#fields.hasErrors('codigoSeccion')}" th:errors="*{codigoSeccion}"></small>
 								</div>
 								<div class="form-group col-md-6" >
 									<label for="nombre">Nombre: <span class="text-danger">*</span></label>
 									<input type="hidden">											    
-										<input type="text" class="form-control" id="nombre" name="nombre"  placeholder="Nombre" th:field="*{nombreSeccion}">
+										<input type="text" class="form-control" id="nombre" name="nombre"  placeholder="Nombre" th:field="*{nombreSeccion}" autocomplete="off">
 										<small class="form-text text-danger" th:if="${#fields.hasErrors('nombreSeccion')}" th:errors="*{nombreSeccion}"></small>
 								</div>
 							</div>
 							<div class="form-row">
 								<div class="form-group col-md-12">
 									<label for="descripcion">Descripción: <span class="text-danger">*</span></label>					    
-									<input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripción" th:field="*{descripcionSeccion}">
+									<input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripción" th:field="*{descripcionSeccion}" autocomplete="off"> 
 									<small class="form-text text-danger" th:if="${#fields.hasErrors('descripcionSeccion')}" th:errors="*{descripcionSeccion}"></small>
 								</div>
 							</div>
@@ -152,7 +157,7 @@
 										><i class="fas fa-trash-alt"></i></a>-->
 										<button class="btn btn-outline-dark" id="btnEliminar" th:attr="onclick=|eliminarSeccion('${seccion.id}' )|" data-toggle="tooltip" data-placement="bottom" title="Eliminar sección"> <i class="fas fa-trash-alt"></i></button>
 										<a
-											th:href="@{/cuestionario/preguntas/{id} (id=${seccion.id})}"
+											th:href="@{/pregunta/{id} (id=${seccion.id})}"
 											class="btn btn-outline-dark"
 											data-toggle="tooltip"
 											data-placement="bottom"

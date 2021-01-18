@@ -27,13 +27,15 @@
 	
     <div class="container">
 
- <!-- Ruta del contendio -->
-    <ol th:replace="base/general :: ruta_contenido(
-      ruta=~{ :: .ruta}, ruta2=~{ :: .ruta2})">
-        <!-- Ruta de la página -->              
-    	<div class="ruta">Miembros</div>
-		<div class="ruta2"></div>	
-    </ol>
+    <!-- Ruta del contendio -->
+     <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+           <a th:href="@{/}">Inicio</a>
+        </li>
+        	<li class="breadcrumb-item active">
+		    	<a >Miembros</a>
+		    </li>
+     </ol>
 
         <!-- Título de la pantalla -->
         <div th:replace="base/general :: titulo_pantalla(titulo=~{ :: .titulo}, btnPrincipal=~{::.btnPrincipal},subTit=~{ :: .subTit})">

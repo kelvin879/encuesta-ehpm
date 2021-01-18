@@ -10,6 +10,7 @@ public class Respuesta {
     @Id
     private String id;
     private String respuesta;
+    private int estado = 0;
 
     public String getId() {
         return id;
@@ -27,10 +28,20 @@ public class Respuesta {
         this.respuesta = respuesta;
     }
 
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
     @Override
     public String toString() {
-        return "Respuesta [id=" + id + ", respuesta=" + respuesta + "]";
+        return "Respuesta [estado=" + estado + ", id=" + id + ", respuesta=" + respuesta + "]";
     }
+    
     
     
 }

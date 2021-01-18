@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import sv.gob.models.usuario.Usuario;
+import sv.gob.models.usuario.Users;
 import sv.gob.repository.usuario.UsuarioRepository;
 
 @Service
@@ -16,7 +16,7 @@ public class UsuarioService implements IUsuarioService {
 	private UsuarioRepository usuarioRepo;
 
 	@Override
-	public void guardar(Usuario usuario) {
+	public void guardar(Users usuario) {
 		// TODO Auto-generated method stub
 		usuarioRepo.save(usuario);
 
@@ -30,15 +30,15 @@ public class UsuarioService implements IUsuarioService {
 	}
 
 	@Override
-	public List<Usuario> buscarTodas() {
+	public List<Users> buscarTodas() {
 		// TODO Auto-generated method stub
-		return (List<Usuario>) usuarioRepo.findAll();
+		return (List<Users>) usuarioRepo.findAll();
 	}
 
 	@Override
-	public Usuario editar(String idUsuario) {
+	public Users editar(String idUsuario) {
 		// TODO Auto-generated method stub
-		Optional<Usuario> optional = usuarioRepo.findById(idUsuario);
+		Optional<Users> optional = usuarioRepo.findById(idUsuario);
 		if (optional.isPresent()) {
 			return optional.get();
 		}

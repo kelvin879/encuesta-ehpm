@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -17,6 +19,9 @@ public class Pregunta {
     private String descripcion;
     private String tipo;
     private List<Respuesta> respuesta;
+    @OneToMany
+    @JoinColumn(name = "idRespuesta")
+    private Respuesta respuesta2;
     private String seccion;
     //private Set<Respuesta> respuesta = new HashSet<>();
     public String getId() {
@@ -67,10 +72,19 @@ public class Pregunta {
         this.seccion = seccion;
     }
 
+  
+    public Respuesta getRespuesta2() {
+        return respuesta2;
+    }
+
+    public void setRespuesta2(Respuesta respuesta2) {
+        this.respuesta2 = respuesta2;
+    }
+
     @Override
     public String toString() {
-        return "Pregunta [descripcion=" + descripcion + ", id=" + id + ", respuesta=" + respuesta + ", seccion="
-                + seccion + ", tipo=" + tipo + ", titulo=" + titulo + "]";
+        return "Pregunta [descripcion=" + descripcion + ", id=" + id + ", respuesta=" + respuesta + ", respuesta2="
+                + respuesta2 + ", seccion=" + seccion + ", tipo=" + tipo + ", titulo=" + titulo + "]";
     }
     
 

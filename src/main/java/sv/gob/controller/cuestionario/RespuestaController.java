@@ -49,7 +49,7 @@ public class RespuestaController {
 
 		for(String res: respuesta)
 		{
-			String respu = res;
+			//String respu = res;
 			System.out.println(res);
 			Respuesta respuest= new Respuesta();
 			serviceRespuesta.guardar(respuest);

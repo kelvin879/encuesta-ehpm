@@ -30,12 +30,14 @@
   <div class="container">
 
     <!-- Ruta del contendio -->
-    <ol th:replace="base/general :: ruta_contenido(
-      ruta=~{ :: .ruta}, ruta2=~{ :: .ruta2})">
-        <!-- Ruta de la página -->              
-    	<div class="ruta">Grupos</div>
-		<div class="ruta2"></div>	
-    </ol>
+     <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+           <a th:href="@{/}">Inicio</a>
+        </li>
+		    <li class="breadcrumb-item active">
+		    	<a >Grupos</a>
+		    </li>
+     </ol>
 
     <!-- Título de la pantalla -->
     <div th:replace="base/general :: titulo_pantalla(
@@ -75,8 +77,7 @@
               <thead>
                 <tr>
                   <th>Codigo</th>
-                  <th>Nombre</th>
-                  <th>Zona de Operacion</th>
+                  <th>Nombre</th>                  
                   <th>Miembros</th>
                   <th>Acciones</th>   
                 </tr>
@@ -86,7 +87,6 @@
                 <tr th:each= "lista:${mostrarGrupo}">
                   <td th:text=${lista.codigoGrupos}></td>
                   <td th:text=${lista.nombreGrupos}></td>
-                  <td th:text=${lista.zonaDeOperacionGrupos}></td>
                   <td>
                     <a
                       th:href="@{/grupo/miembros/administrar}"
